@@ -1,8 +1,10 @@
 #!/usr/bin/python
 
 import MySQLdb
+import config
 
-db = MySQLdb.connect("localhost","root","MySql","TESTDB" )
+db = MySQLdb.connect(config.settings['host'],config.settings['user'],config.settings['password']\
+	,config.settings['db_name'] )
 
 cursor = db.cursor()
 
