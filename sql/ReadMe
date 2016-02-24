@@ -1,0 +1,16 @@
+Mysql for python needs MySQLdb.
+to check if it is installed in your system 
+
+put below code in a file and excute it:
+
+#!/usr/bin/python
+
+import MySQLdb
+
+if error shows follow instructions below and run command
+
+cd MySQL-python-1.2.4b4
+python setup.py build
+python setup.py install
+
+(may need sudo permission)  
