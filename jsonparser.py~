@@ -6,8 +6,7 @@ response = urllib.request.urlopen(url)
 content = response.read()
 data = json.loads(content.decode("utf8"))
 
-
-for i in data['items']:
-    print(i['link'])
+#for i in data['items']:
+#    print(i['link'])
 
 print(data)
