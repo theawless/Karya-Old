@@ -1,3 +1,4 @@
+import os
 import gi
 import urllib.parse
 import urllib.request
@@ -24,12 +25,12 @@ class EntryWindow(Gtk.Window):
 #        view.open(url)
 #        vbox.pack_start(view, True, True, 0)
 
-        button01 = Gtk.Button.new_with_label("Search")
+        button01 = Gtk.Button.new_with_label("Search on web")
         button01.connect("clicked", self.search, url, Entry01, vbox)
         vbox.pack_start(button01, True, True, 0)
 
-        button02 = Gtk.Button.new_with_label("Show links from search result")
-        button02.connect("clicked", self.showlinks, vbox)
+        button02 = Gtk.Button.new_with_label("Search locally")
+        button02.connect("clicked", self.search_local, vbox, Entry01)
         vbox.pack_start(button02, True, True, 0)
 
     def search(self, button, url, Entry01, vbox):
@@ -45,8 +46,13 @@ class EntryWindow(Gtk.Window):
             print(i['link'])
             print(i['snippet'])
 
-    def showlinks(self, button, vbox):
-        print("none")
+    def search_local(self, button, vbox, Entry01):
+        search_keywords = Entry01.get_text()
+        print("Searching in local files...")
+        for root, dirs, files in os.walk('../../../'):
+            for file in files:
+                if search_keywords in file:
+                    print(file)
 #        button03 = Gtk.Button.new_with_label("test successfull")
 #        vbox.pack_start(button03, True, True, 0)
 
