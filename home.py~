@@ -1,6 +1,11 @@
 import gi
+import urllib.parse
+import urllib.request
+import json
+
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk, WebKit
+
 
 class EntryWindow(Gtk.Window):
     def __init__(self):
@@ -9,21 +14,35 @@ class EntryWindow(Gtk.Window):
 
         vbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=6)
         self.add(vbox)
-        self.entry = Gtk.Entry()
-        self.entry.set_text("Hello World")
-        vbox.pack_start(self.entry, True, True, 0)
-        
-        view = WebKit.WebView()
-        vbox.pack_start(view, True, True, 0)
-        url = "https://www.googleapis.com/customsearch/v1?key=AIzaSyB0lhXv_RqGJRQnlQ5ZrihDLy3TBrEmjIk%20&cx=017576662512468239146:omuauf_lfve&q=lectures"
-        view.open(url)
+        Entry01 = Gtk.Entry()
+        Entry01.set_text("Write something..")
+        vbox.pack_start(Entry01, True, True, 0)
+#        url = "https://www.googleapis.com/customsearch/v1?key=AIzaSyB0lhXv_RqGJRQnlQ5ZrihDLy3TBrEmjIk%20&cx=017576662512468239146:omuauf_lfve&q="
+        url = "https://www.googleapis.com/customsearch/v1?key=AIzaSyDKXPuaXh84T_tVVQcxQdbQS8TzNk2uuuU%20&cx=017576662512468239146:omuauf_lfve&q="
+#        view = WebKit.WebView()
+
+#        view.open(url)
+#        vbox.pack_start(view, True, True, 0)
 
         button01 = Gtk.Button.new_with_label("Search")
-        button01.connect("clicked", self.search)
+        button01.connect("clicked", self.search, url, Entry01)
         vbox.pack_start(button01, True, True, 0)
 
-    def search(self, button):
+        button02 = Gtk.Button.new_with_label("Show links from search result")
+        button02.connect("clicked", self.showlinks)
+        vbox.pack_start(button02, True, True, 0)
+
+    def search(self, button, url, Entry01):
         print("\"Search\" button was clicked")
+        search_keywords = Entry01.get_text()
+        url = url + search_keywords
+        print("URL is : "+url)
+        response = urllib.request.urlopen(url)
+        content = response.read()
+        data = json.loads(content.decode("utf8"))
+
+    def showlinks(self, button):
+        print("none")
 
 win = EntryWindow()
 win.connect("delete-event", Gtk.main_quit)
