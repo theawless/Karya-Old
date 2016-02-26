@@ -1,16 +1,22 @@
 Mysql for python needs MySQLdb.
 to check if it is installed in your system 
 
-put below code in a file and excute it:
+put below python code in a file and excute it:
 
 #!/usr/bin/python
 
 import MySQLdb
 
-if error shows follow instructions below and run command
+
+if error shows follow instructions below and run commands given below
+Download tar File MySQL-python-1.2.4b4.tar,extract it
 
 cd MySQL-python-1.2.4b4
 python setup.py build
 python setup.py install
 
 (may need sudo permission)  
+
+
+License MySQLDb is licensed under GPL V2.0 license.
+License file is available in MySQL-python-1.2.4b4/GPL-2.0 file

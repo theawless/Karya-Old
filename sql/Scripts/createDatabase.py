@@ -8,12 +8,8 @@ database = MySQLdb.connect(config.settings['host'],config.settings['user'],confi
 
 cursor = database.cursor()
 
-sql = "SELECT VERSION()"
+sql = "CREATE DATABASE IF NOT EXISTS mysqlTestDatabase"
 
 cursor.execute(sql)
 
-result = cursor.fetchone()
-
-print "MySql Database version is : %s " % result
-
-database.close()
+print "No error and warning means that query exceuted successfully."
