@@ -1,0 +1,57 @@
+Dependencies
+
+Software Dependencies
+
+Ubuntu (Version 14.04 and higher)
+License: Mainly GPL
+
+Python (Version 3 and above)
+License: GPL compatible
+
+PyAudio (Version 0.2.9 and higher)
+License: MIT licensed
+
+Python GTK+3 (Version 3.4)
+Licence : GNU LGPL
+
+WebKit (Verson 2.10.7)
+Licence : BSD
+
+Zhang, A.(2016) Speech Recognition (Version 3.2)
+License: BSD
+URL https://github.com/Uberi/speech_recognition#readme
+
+CMU Sphinx (Version 4 and higher)
+License: BSD
+URL http://cmusphinx.sourceforge.net/
+
+Gedit (Version 3.8 and higher)
+License: GPL v2
+URL https://wiki.gnome.org/Apps/Gedit
+
+Swig( Version 3.0.6 and higher)
+License: GPL
+URL http://www.swig.org/Release/LICENSE
+
+Quickly
+License: GPL v3
+
+MySQLDb Python Module
+License: GNU General Public License (GPL), Python License (CNRI Python License), Zope Public License
+URL http://sourceforge.net/projects/mysql-python
+License file is available in MySQL-python-1.2.4b4/GPL-2.0 file
+
+Attributes
+
+Gedit Wiki
+License: GPl v2
+https://wiki.gnome.org/Apps/Gedit/PythonPluginHowTo
+
+Uberi Speech Recognition Examples
+License: BSD
+https://github.com/Uberi/speech_recognition/tree/master/examples
+
+Hardware Dependencies
+
+Microphone
+
