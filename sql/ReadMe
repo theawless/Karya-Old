@@ -15,8 +15,4 @@ cd MySQL-python-1.2.4b4
 python setup.py build
 python setup.py install
 
-(may need sudo permission)  
-
-
-License MySQLDb is licensed under GPL V2.0 license.
-License file is available in MySQL-python-1.2.4b4/GPL-2.0 file
+(may need sudo permission to install)  

@@ -1,0 +1,16 @@
+Depends upon python module MySQLDb
+MySQLDb
+
+url 
+ 	http://sourceforge.net/projects/mysql-python
+
+License
+	GNU General Public License (GPL), Python License (CNRI Python License), Zope Public License
+
+Platforms
+    OS Independent 
+
+Python versions
+    2.3 and above
+
+License file is available in MySQL-python-1.2.4b4/GPL-2.0 file
