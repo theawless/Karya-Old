@@ -12,7 +12,6 @@ class EntryWindow(Gtk.Window):
     def __init__(self):
         Gtk.Window.__init__(self, title="Entry Demo")
         self.set_size_request(200, 100)
-
         vbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=6)
         self.add(vbox)
         Entry01 = Gtk.Entry()
@@ -36,6 +35,7 @@ class EntryWindow(Gtk.Window):
         button03 = Gtk.Button.new_with_label("Execute task")
         button03.connect("clicked", self.exec_task, vbox, Entry01)
         vbox.pack_start(button03, True, True, 0)
+        
 
     def search(self, button, url, Entry01, vbox):
         print("\"Search\" button was clicked")
@@ -53,13 +53,26 @@ class EntryWindow(Gtk.Window):
     def search_local(self, button, vbox, Entry01):
         search_keywords = Entry01.get_text()
         print("Searching in local files...")
+        button = [0]*1000
+        i = 0
         for root, dirs, files in os.walk('../../../'):
             for file in files:
                 if search_keywords in file:
-                    print(file)
+                    print(file+' and ')
+                    print(os.path.join(root,file))#Getting full path of the file
+                    button[i] = Gtk.Button.new_with_label(file)
+                    filepathh=  os.path.join(root,file)
+                    button[i].connect("clicked" ,self.open_file_shown_in_search_result ,filepathh)
+                    vbox.pack_start(button[i], True, True, 0)
+                    button[i].show()
+                    i = i+1
+    def open_file_shown_in_search_result(self, button, filepathh):
+        subprocess.call(["xdg-open",filepathh])
+
+
 #        button03 = Gtk.Button.new_with_label("test successfull")
 #        vbox.pack_start(button03, True, True, 0)
-    
+
     def exec_task(self, button, vbox, Entry01):
         command = Entry01.get_text()
 #Shutdown now
@@ -85,11 +98,6 @@ class EntryWindow(Gtk.Window):
             if response == (Gtk.ResponseType.OK or Gtk.ResponseType.CANCEL):
                 dialog.destroy()
                 
-
-
-
-
-
 
 win = EntryWindow()
 win.connect("delete-event", Gtk.main_quit)
