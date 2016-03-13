@@ -3,26 +3,25 @@ import gi
 import urllib.parse
 import urllib.request
 import json
-#from gui_functions import search, local_search, exec_task
+
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk, WebKit
 
 
 class EntryWindow(Gtk.Window):
     def __init__(self):
-        Gtk.Window.__init__(self, title="Entry Demo")
+        Gtk.Window.__init__(self, title="Tasker")
         self.set_size_request(200, 100)
         vbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=6)
         self.add(vbox)
         Entry01 = Gtk.Entry()
         Entry01.set_text("Write something..")
         vbox.pack_start(Entry01, True, True, 0)
-#        url = "https://www.googleapis.com/customsearch/v1?key=AIzaSyB0lhXv_RqGJRQnlQ5ZrihDLy3TBrEmjIk%20&cx=017576662512468239146:omuauf_lfve&q="
+        # url = "https://www.googleapis.com/customsearch/v1?key=AIzaSyB0lhXv_RqGJRQnlQ5ZrihDLy3TBrEmjIk%20&cx=017576662512468239146:omuauf_lfve&q="
         url = "https://www.googleapis.com/customsearch/v1?key=AIzaSyDKXPuaXh84T_tVVQcxQdbQS8TzNk2uuuU%20&cx=017576662512468239146:omuauf_lfve&q="
-#        view = WebKit.WebView()
-
-#        view.open(url)
-#        vbox.pack_start(view, True, True, 0)
+        # view = WebKit.WebView()
+        # view.open(url)
+        # vbox.pack_start(view, True, True, 0)
 
         button01 = Gtk.Button.new_with_label("Search on web")
         button01.connect("clicked", self.search, url, Entry01, vbox)
@@ -35,13 +34,16 @@ class EntryWindow(Gtk.Window):
         button03 = Gtk.Button.new_with_label("Execute task")
         button03.connect("clicked", self.exec_task, vbox, Entry01)
         vbox.pack_start(button03, True, True, 0)
-        
 
     def search(self, button, url, Entry01, vbox):
         print("\"Search\" button was clicked")
-        search_keywords = Entry01.get_text()
+        line_to_search = Entry01.get_text()
+        words_to_search = line_to_search.split()
+        search_keywords = ""
+        for word in words_to_search:
+            search_keywords += word + '+'
         url = url + search_keywords
-        print("URL is : "+url)
+        print("URL is : " + url)
         response = urllib.request.urlopen(url)
         content = response.read()
         data = json.loads(content.decode("utf8"))
@@ -53,57 +55,53 @@ class EntryWindow(Gtk.Window):
     def search_local(self, button, vbox, Entry01):
         search_keywords = Entry01.get_text()
         print("Searching in local files...")
-        button = [0]*1000
+        button = [0] * 1000
         i = 0
         for root, dirs, files in os.walk('../../../'):
             for file in files:
                 if search_keywords in file:
-                    print(file+' and ')
-                    print(os.path.join(root,file))#Getting full path of the file
+                    print(file + ' and ')
+                    # Getting full path of the file
+                    print(os.path.join(root, file))
                     button[i] = Gtk.Button.new_with_label(file)
-                    filepathh=  os.path.join(root,file)
-                    button[i].connect("clicked" ,self.open_file_shown_in_search_result ,filepathh)
+                    filepathh = os.path.join(root, file)
+                    button[i].connect("clicked", self.open_file_shown_in_search_result, filepathh)
                     vbox.pack_start(button[i], True, True, 0)
                     button[i].show()
-                    i = i+1
+                    i += 1
+
     def open_file_shown_in_search_result(self, button, filepathh):
-        subprocess.call(["xdg-open",filepathh])
+        subprocess.call(["xdg-open", filepathh])
 
-
-#        button03 = Gtk.Button.new_with_label("test successfull")
-#        vbox.pack_start(button03, True, True, 0)
+    #        button03 = Gtk.Button.new_with_label("test successfull")
+    #        vbox.pack_start(button03, True, True, 0)
 
     def exec_task(self, button, vbox, Entry01):
         command = Entry01.get_text()
-#Shutdown now
-        if command=="shutdown now":
+        # Shutdown now
+        if command == "shutdown now":
             os.system("sudo shutdown 0")
-#Reboot
-        elif command==("reboot" or "restart"):
+        # Reboot
+        elif command == ("reboot" or "restart"):
             os.system("sudo shutdown 2 -r")
-#shutdown in x minutes
-        elif command[0]=='s'and command[1]=='h'and command[2]=='u'and command[3]=='t'and command[4]=='d'and command[5]=='o'and command[6]=='w'and command[7]=='n':
-            os.system("sudo shutdown "+command[12])
-#Open Applications or files
-        elif  command[0]==('o' or 'O') and command[1]=='p' and command[2]=='e' and command[3]=='n':
-            #print(command[5:])
+        # shutdown in x minutes
+        elif command[0] == 's' and command[1] == 'h' and command[2] == 'u' and command[3] == 't' and command[
+            4] == 'd' and command[5] == 'o' and command[6] == 'w' and command[7] == 'n':
+            os.system("sudo shutdown " + command[12])
+        # Open Applications or files
+        elif command[0] == ('o' or 'O') and command[1] == 'p' and command[2] == 'e' and command[3] == 'n':
+            # print(command[5:])
             subprocess.call(["xdg-open", command[5:]])
             os.system(command[5:])
-            
-#else
         else:
-            dialog = Gtk.MessageDialog(self, 0, Gtk.MessageType.WARNING,Gtk.ButtonsType.OK_CANCEL, "Command Not Found")
+            dialog = Gtk.MessageDialog(self, 0, Gtk.MessageType.WARNING, Gtk.ButtonsType.OK_CANCEL, "Command Not Found")
             dialog.format_secondary_text("Enter a valid command")
             response = dialog.run()
             if response == (Gtk.ResponseType.OK or Gtk.ResponseType.CANCEL):
                 dialog.destroy()
-                
+
 
 win = EntryWindow()
 win.connect("delete-event", Gtk.main_quit)
 win.show_all()
 Gtk.main()
-
-
-
-
