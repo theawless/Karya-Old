@@ -13,14 +13,22 @@ class HomeWindow(Gtk.Window):
     def __init__(self):
         Gtk.Window.__init__(self, title="Home")
         self.set_size_request(950, 600)
-
-        vbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=6)
         scrolled = Gtk.ScrolledWindow()
         scrolled.set_policy(Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC)
         self.add(scrolled)
+#
+#         navigation_bar = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
+#         navigation_bar.set_size_request(950, 25)
+#         back_button = Gtk.Button.new_with_label("<")
+#         back_button.connect("clicked", self.back_button_signal)
+#         forward_button = Gtk.Button.new_with_label(">")
+# #        forward_button.connect("clicked", self.forward_button_signal)
+#         navigation_bar.pack_start(back_button, True, True, 0)
+#         navigation_bar.pack_start(forward_button, True, True, 0)
+        vbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=6)
+#        vbox.pack_start(navigation_bar, True, True, 5)
         scrolled.add(vbox)
         self.Create_Homepage(vbox)
-
 
     def Create_Homepage(self, vbox):
         Entry01 = Gtk.Entry()
@@ -34,17 +42,9 @@ class HomeWindow(Gtk.Window):
         blank_box.set_size_request(800, 600)
         vbox.pack_start(blank_box, True, True, 0)
 
-        # button_search_on_web = Gtk.Button.new_with_label("Search on web")
-        # button_search_on_web.connect("clicked", self.search, Entry01, hbox)
-        # hbox.pack_start(button_search_on_web, True, True, 0)
-
         button_search = Gtk.Button.new_with_label("Search")
         button_search.connect("clicked", self.Search, Entry01, vbox)
         hbox.pack_start(button_search, True, True, 0)
-
-        # button_search_locally = Gtk.Button.new_with_label("Search locally")
-        # #button_search_locally.connect("clicked", self.search_local, LocalSearchScrollView, Entry01)
-        # hbox.pack_start(button_search_locally, True, True, 0)
 
         button_execute = Gtk.Button.new_with_label("Execute")
         button_execute.connect("clicked", self.exec_task, hbox, Entry01)
@@ -54,6 +54,15 @@ class HomeWindow(Gtk.Window):
     def Destroy_Homepage(self,vbox):
         for widget in vbox:
             widget.destroy()
+
+
+    def back_button_signal_of_webview(self, button, webview):
+        if webview.can_go_back():
+            webview.go_back()
+
+    def forward_button_signal_of_webview(self, button, webview):
+        if webview.can_go_forward():
+            webview.go_forward()
 
 
     def Create_WebView(self,output_box, text):
@@ -72,6 +81,22 @@ class HomeWindow(Gtk.Window):
         output_box.pack_start(WebViewBox, True, True, 0)
         WebViewBox.show()
 
+        nv = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
+        navigation_bar = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
+        navigation_bar.set_size_request(950, 25)
+        back_button = Gtk.Button.new_with_label("<")
+        back_button.connect("clicked", self.back_button_signal_of_webview, view)
+        forward_button = Gtk.Button.new_with_label(">")
+        forward_button.connect("clicked", self.forward_button_signal_of_webview, view)
+        navigation_bar.pack_start(back_button, True, True, 0)
+        back_button.show()
+        navigation_bar.pack_start(forward_button, True, True, 0)
+        forward_button.show()
+        navigation_bar.show()
+        nv.pack_start(navigation_bar, True, True, 0)
+        output_box.pack_start(nv, True, True, 0)
+        nv.show()
+
 
 
     def Create_LocalSearchScrollView(self, output_box, searchkeywords):
@@ -83,7 +108,6 @@ class HomeWindow(Gtk.Window):
         output_box.pack_start(scrolled, True, True, 0)
         scrolled.show()
         LocalSearchScrollView.show()
-        # return LocalSearchScrollView
         print("Searching in local files inside function...")
         button = [0] * 10000
         i = 0
@@ -111,30 +135,16 @@ class HomeWindow(Gtk.Window):
         self.Create_LocalSearchScrollView(output_box, searchkeywords)
 
 
+    def Destroy_Outpage(self, vbox):
+        for widget in vbox:
+            widget.destroy()
+
+
     def Search(self, button, Entry01, vbox):
         search_keywords = Entry01.get_text()
         # Goto next page
         self.Create_Outputpage(vbox, search_keywords)
 
-
-
-    # def search_local(self, button, scrolled, Entry01):
-    #     # Destroy previous search result
-    #     for widget in scrolled:
-    #         widget.destroy()
-    #     # Get text from the entry box
-    #     search_keywords = Entry01.get_text()
-    #     print("Searching in local files...")
-    #     button = [0] * 10000
-    #     i = 0
-    #     search_result_filepaths, search_result_filenames = localsearch(search_keywords)
-    #     for res in search_result_filepaths:
-    #         button[i] = Gtk.Button.new_with_label(search_result_filenames[i])
-    #         button[i].connect("clicked", self.open_file_shown_in_search_result, search_result_filepaths[i])
-    #         scrolled.pack_start(button[i], True, True, 0)
-    #         button[i].show()
-    #         i += 1
-    #
 
     def open_file_shown_in_search_result(self, button, filepathh):
         # open_file_in_default_application(filepathh)
