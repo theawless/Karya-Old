@@ -10,17 +10,21 @@ gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk, WebKit
 
 
-class EntryWindow(Gtk.Window):
+class HomeWindow(Gtk.Window):
     def __init__(self):
-        Gtk.Window.__init__(self, title="Tasker")
-        self.set_size_request(200, 100)
+        Gtk.Window.__init__(self, title="Home")
+        self.set_size_request(900, 600)
         vbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=6)
-        self.add(vbox)
+        scrolled = Gtk.ScrolledWindow()
+        scrolled.set_policy(Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC)
+        self.add(scrolled)
+        scrolled.add(vbox)
         Entry01 = Gtk.Entry()
         Entry01.set_text("Write something..")
         vbox.pack_start(Entry01, True, True, 0)
 
         button_search_on_web = Gtk.Button.new_with_label("Search on web")
+        #button_search_on_web.
         button_search_on_web.connect("clicked", self.search, Entry01, vbox)
         vbox.pack_start(button_search_on_web, True, True, 0)
 
@@ -33,7 +37,7 @@ class EntryWindow(Gtk.Window):
         vbox.pack_start(button_execute, True, True, 0)
 
 
-    def search_local(self, button, vbox, Entry01):
+    def search_local(self, button, scrolled, Entry01):
         search_keywords = Entry01.get_text()
         print("Searching in local files...")
         button = [0] * 1000
@@ -42,13 +46,14 @@ class EntryWindow(Gtk.Window):
         for res in search_result_filepaths:
             button[i] = Gtk.Button.new_with_label(search_result_filenames[i])
             button[i].connect("clicked", self.open_file_shown_in_search_result, search_result_filepaths[i])
-            vbox.pack_start(button[i], True, True, 0)
+            scrolled.pack_start(button[i], True, True, 0)
             button[i].show()
             i += 1
 
 
     def open_file_shown_in_search_result(self, button, filepathh):
         open_file_in_default_application(filepathh)
+        subprocess.call(["xdg-open", filepathh])
 
 
     def exec_task(self, button, vbox, Entry01):
@@ -62,7 +67,7 @@ class EntryWindow(Gtk.Window):
         json_data = google_search(line_to_search)
 
 
-win = EntryWindow()
+win = HomeWindow()
 win.connect("delete-event", Gtk.main_quit)
 win.show_all()
 Gtk.main()
