@@ -1,0 +1,6 @@
+GTK +3
+License LGPL version 2.1
+https://python-gtk-3-tutorial.readthedocs.org/en/latest/
+
+Webkit
+License BSD
