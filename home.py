@@ -3,10 +3,28 @@ import gi
 import urllib.parse
 import urllib.request
 import json
+import threading
 from text_analyser import text_analyser
+from srecog import SpeechRecogniser
 from functions import *
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk, WebKit
+
+
+class myThread (threading.Thread):
+    def __init__(self, threadID, name, Entry, vbox):
+        threading.Thread.__init__(self)
+        self.threadID = threadID
+        self.name = name
+        self.entry = Entry
+        self.vbox = vbox
+    def run(self):
+        print("Starting " + self.name)
+        Call_SpeechRecogniser(self.name, self.entry, self.vbox)
+        print("Exiting " + self.name)
+
+
+
 
 
 class HomeWindow(Gtk.Window):
@@ -44,6 +62,10 @@ class HomeWindow(Gtk.Window):
 
         button_search = Gtk.Button.new_with_label("Search")
         button_search.connect("clicked", self.Search, Entry01, vbox)
+        hbox.pack_start(button_search, True, True, 0)
+	
+        button_search = Gtk.Button.new_with_label("sr")
+        button_search.connect("clicked", self.Call_Thread_Handler, Entry01, vbox)
         hbox.pack_start(button_search, True, True, 0)
 
         button_execute = Gtk.Button.new_with_label("Execute")
@@ -160,6 +182,17 @@ class HomeWindow(Gtk.Window):
         print("\"Search\" button was clicked")
         line_to_search = Entry01.get_text()
         json_data = google_search(line_to_search)
+
+    def Call_Thread_Handler(self, button, Entry, vbox):
+        th = myThread(1, "SR_Thread", Entry, vbox)
+        th.start()
+        th.join()
+
+def Call_SpeechRecogniser(thread_name, Entry, vbox):
+    Sr = SpeechRecogniser()
+    settings = {'Main'   : {'recogniser':'Sphinx'},
+                'Google' : {'api_key':''}}
+    text = Sr.recog(settings)
 
 
 win = HomeWindow()
