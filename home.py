@@ -116,8 +116,8 @@ class HomeWindow(Gtk.Window):
         forward_button.show()
         navigation_bar.show()
         nv.pack_start(navigation_bar, True, True, 0)
-        output_box.pack_start(nv, True, True, 0)
-        nv.show()
+        #output_box.pack_start(nv, True, True, 0)
+        #nv.show()
 
 
 
@@ -170,6 +170,7 @@ class HomeWindow(Gtk.Window):
 
     def open_file_shown_in_search_result(self, button, filepathh):
         # open_file_in_default_application(filepathh)
+        print("Path is "+ filepathh)
         subprocess.call(["xdg-open", filepathh])
 
 
