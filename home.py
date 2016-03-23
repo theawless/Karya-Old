@@ -189,10 +189,39 @@ class HomeWindow(Gtk.Window):
         th.start()
         th.join()
 
+    def textanalyser(self,text):
+        output = { "repeat" : "",
+                   "time_of_execution": "",
+                   "action" : { "start_dictation" : "",
+                                "run_application" : "",
+                                "search" : "",
+                                "play" : "",
+                                "calculate" : "" } }
+        if state=="0":
+            if "start dictation" or "dictate" in text:
+                 state = "dictating"
+
+            elif "run" in text:
+                 application_to_open = text.rsplit(None, 1)[-1]
+                 output["action"]["run_application"] = "application_to_open"
+
+            elif "search" in text:
+                 state = "searching"
+
+            elif "play" in text:
+                 output["action"]["play"] = text.split("play",1)[1:]
+       
+        if state=="dictating":
+            output["action"]["run_application"] = "gedit"
+
+        if state=="searching":
+            output["action"]["search"] = text.split("search",1)[1:]
+
 def Call_SpeechRecogniser(thread_name, Entry, vbox):
     Sr = SpeechRecogniser()
-    settings = {'Main'   : {'recogniser':'Sphinx'},
-                'Google' : {'api_key':''}}
+    settings = {'Main'   : {'recogniser':'WITAI'},
+                'Google' : {'api_key':''},
+                'WITAI'  : {'api_key':'OWRIVTWRQ6THEF5EOF6TV4EHN4J3NSO4'} }
     text = Sr.recog(settings)
 
 
