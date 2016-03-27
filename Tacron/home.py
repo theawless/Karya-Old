@@ -1,50 +1,30 @@
-import os, sys, subprocess
 import gi
-import urllib.parse
-import urllib.request
-import json
 import threading
 from text_analyser import text_analyser
-from srecog import SpeechRecogniser
 from functions import *
+
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk, WebKit
 
 
-class myThread (threading.Thread):
-    def __init__(self, threadID, name, Entry, vbox):
-        threading.Thread.__init__(self)
-        self.threadID = threadID
-        self.name = name
-        self.entry = Entry
-        self.vbox = vbox
-    def run(self):
-        print("Starting " + self.name)
-        Call_SpeechRecogniser(self.name, self.entry, self.vbox)
-        print("Exiting " + self.name)
-
-
-
-
-
-class HomeWindow(Gtk.Window):
+class HomeWindow():
     def __init__(self):
         Gtk.Window.__init__(self, title="Home")
         self.set_size_request(950, 600)
         scrolled = Gtk.ScrolledWindow()
         scrolled.set_policy(Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC)
         self.add(scrolled)
-#
-#         navigation_bar = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
-#         navigation_bar.set_size_request(950, 25)
-#         back_button = Gtk.Button.new_with_label("<")
-#         back_button.connect("clicked", self.back_button_signal)
-#         forward_button = Gtk.Button.new_with_label(">")
-# #        forward_button.connect("clicked", self.forward_button_signal)
-#         navigation_bar.pack_start(back_button, True, True, 0)
-#         navigation_bar.pack_start(forward_button, True, True, 0)
+        #
+        #         navigation_bar = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
+        #         navigation_bar.set_size_request(950, 25)
+        #         back_button = Gtk.Button.new_with_label("<")
+        #         back_button.connect("clicked", self.back_button_signal)
+        #         forward_button = Gtk.Button.new_with_label(">")
+        # #        forward_button.connect("clicked", self.forward_button_signal)
+        #         navigation_bar.pack_start(back_button, True, True, 0)
+        #         navigation_bar.pack_start(forward_button, True, True, 0)
         vbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=6)
-#        vbox.pack_start(navigation_bar, True, True, 5)
+        #        vbox.pack_start(navigation_bar, True, True, 5)
         scrolled.add(vbox)
         self.Create_Homepage(vbox)
 
@@ -63,7 +43,7 @@ class HomeWindow(Gtk.Window):
         button_search = Gtk.Button.new_with_label("Search")
         button_search.connect("clicked", self.Search, Entry01, vbox)
         hbox.pack_start(button_search, True, True, 0)
-	
+
         button_search = Gtk.Button.new_with_label("sr")
         button_search.connect("clicked", self.Call_Thread_Handler, Entry01, vbox)
         hbox.pack_start(button_search, True, True, 0)
@@ -72,11 +52,9 @@ class HomeWindow(Gtk.Window):
         button_execute.connect("clicked", self.exec_task, hbox, Entry01)
         hbox.pack_start(button_execute, True, True, 0)
 
-
-    def Destroy_Homepage(self,vbox):
+    def Destroy_Homepage(self, vbox):
         for widget in vbox:
             widget.destroy()
-
 
     def back_button_signal_of_webview(self, button, webview):
         if webview.can_go_back():
@@ -86,8 +64,7 @@ class HomeWindow(Gtk.Window):
         if webview.can_go_forward():
             webview.go_forward()
 
-
-    def Create_WebView(self,output_box, text):
+    def Create_WebView(self, output_box, text):
         print("Creating webview inside Create_WebView function...")
         url = "https://www.google.co.in/search?q="
         words_to_search = text.split()
@@ -116,10 +93,8 @@ class HomeWindow(Gtk.Window):
         forward_button.show()
         navigation_bar.show()
         nv.pack_start(navigation_bar, True, True, 0)
-        #output_box.pack_start(nv, True, True, 0)
-        #nv.show()
-
-
+        # output_box.pack_start(nv, True, True, 0)
+        # nv.show()
 
     def Create_LocalSearchScrollView(self, output_box, searchkeywords):
         print("Creating Local search view inside function...")
@@ -141,7 +116,6 @@ class HomeWindow(Gtk.Window):
             button[i].show()
             i += 1
 
-
     def Create_Outputpage(self, vbox, searchkeywords):
         self.Destroy_Homepage(vbox)
         print("Initialised widgets of vbox destroyed...")
@@ -156,28 +130,23 @@ class HomeWindow(Gtk.Window):
         # Create view on Outputpage to show local search result
         self.Create_LocalSearchScrollView(output_box, searchkeywords)
 
-
     def Destroy_Outpage(self, vbox):
         for widget in vbox:
             widget.destroy()
-
 
     def Search(self, button, Entry01, vbox):
         search_keywords = Entry01.get_text()
         # Goto next page
         self.Create_Outputpage(vbox, search_keywords)
 
-
     def open_file_shown_in_search_result(self, button, filepathh):
         # open_file_in_default_application(filepathh)
-        print("Path is "+ filepathh)
+        print("Path is " + filepathh)
         subprocess.call(["xdg-open", filepathh])
-
 
     def exec_task(self, button, hbox, Entry01):
         command = Entry01.get_text()
         output = text_analyser(command)
-
 
     def search(self, button, Entry01, hbox):
         print("\"Search\" button was clicked")
@@ -188,44 +157,3 @@ class HomeWindow(Gtk.Window):
         th = myThread(1, "SR_Thread", Entry, vbox)
         th.start()
         th.join()
-
-    def textanalyser(self,text):
-        output = { "repeat" : "",
-                   "time_of_execution": "",
-                   "action" : { "start_dictation" : "",
-                                "run_application" : "",
-                                "search" : "",
-                                "play" : "",
-                                "calculate" : "" } }
-        if state=="0":
-            if "start dictation" or "dictate" in text:
-                 state = "dictating"
-
-            elif "run" in text:
-                 application_to_open = text.rsplit(None, 1)[-1]
-                 output["action"]["run_application"] = "application_to_open"
-
-            elif "search" in text:
-                 state = "searching"
-
-            elif "play" in text:
-                 output["action"]["play"] = text.split("play",1)[1:]
-       
-        if state=="dictating":
-            output["action"]["run_application"] = "gedit"
-
-        if state=="searching":
-            output["action"]["search"] = text.split("search",1)[1:]
-
-def Call_SpeechRecogniser(thread_name, Entry, vbox):
-    Sr = SpeechRecogniser()
-    settings = {'Main'   : {'recogniser':'WITAI'},
-                'Google' : {'api_key':''},
-                'WITAI'  : {'api_key':'OWRIVTWRQ6THEF5EOF6TV4EHN4J3NSO4'} }
-    text = Sr.recog(settings)
-
-
-win = HomeWindow()
-win.connect("delete-event", Gtk.main_quit)
-win.show_all()
-Gtk.main()

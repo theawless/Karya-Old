@@ -4,7 +4,7 @@ import re
 import subprocess
 
 
-class text_analyser:
+class TextAnalyser:
     def __init__(self,input_text):
         # Open an application or file
         if input_text.startswith("open" or "Open"):

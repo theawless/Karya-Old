@@ -1,0 +1,26 @@
+Follow PEP 0008 -- Style Guide for Python Code
+https://www.python.org/dev/peps/pep-0008/
+
+Important Points:
+
+* Indent with exactly 4 spaces. No Tabs allowed.
+
+* Limit all lines to a maximum of 79 characters.
+* Surround top-level function and class definitions with two blank lines.
+* Method definitions inside a class are surrounded by a single blank line.
+* Avoid trailing whitespace anywhere.
+
+* Imports should usually be on separate lines.
+* Imports on top of the file.
+* No wildcard imports.
+
+* One space after block comment and comment to indented too.
+* Use inline comments sparingly.
+* Write docstrings for all public modules, functions, classes, and methods. 
+
+* Module names is all-lowercase.
+* Class names with CamelCase.
+* Function names all-lowercase with underscores.
+* Use self for the first argument to instance methods.
+* Use cls for the first argument to class methods.
+* Constants in all capital.

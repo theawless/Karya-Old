@@ -1,0 +1,2 @@
+MainThread - DEBUG - Setlog logger setup done
+MainThread - DEBUG - get configure box

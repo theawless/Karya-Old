@@ -1,19 +1,17 @@
-
-
 #!/usr/bin/python3
 
 import logging
 
-logger = logging.getLogger('DicNator')
-path = '.local/share/gedit/plugins/DicNator/Logs/'
+logger = logging.getLogger('dictonator')
+path = ''
 
 
 def setup_logger():
     # setting format of log
-    formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
+    formatter = logging.Formatter('%(threadName)s - %(levelname)s - %(message)s')
     logger.setLevel(logging.DEBUG)
     # file location
-    debug_log = path + 'pluginlogfile.txt'
+    debug_log = path + 'logs/log.txt'
 
     # adding handler for console logs
     sh = logging.StreamHandler()
@@ -24,10 +22,7 @@ def setup_logger():
     fh = logging.FileHandler(debug_log)
     fh.setFormatter(formatter)
     logger.addHandler(fh)
-
     logger.debug('Setlog logger setup done')
 
 
 setup_logger()
-
-

@@ -1,13 +1,12 @@
 import json
 import os
 import subprocess
-import sys
 import urllib
 
 
 def localsearch(search_keywords):
-    search_result_filepaths = [0]*2000
-    search_result_filenames = [0]*2000
+    search_result_filepaths = [0] * 2000
+    search_result_filenames = [0] * 2000
     i = 0
     for root, dirs, files in os.walk('../../../../'):
         for file in files:
@@ -27,7 +26,8 @@ def open_file_in_default_application(file_path):
 
 
 def google_search(text):
-    url = "https://www.googleapis.com/customsearch/v1?key=AIzaSyDKXPuaXh84T_tVVQcxQdbQS8TzNk2uuuU%20&cx=017576662512468239146:omuauf_lfve&q="
+    url = "https://www.googleapis.com/customsearch/v1?key=AIzaSyDKXPuaXh84T_tVVQcxQdbQS8TzNk2uuuU" \
+          + "%20&cx=017576662512468239146:omuauf_lfve&q="
     words_to_search = text.split()
     search_keywords = ""
     for word in words_to_search:
@@ -42,4 +42,3 @@ def google_search(text):
         print(i['link'])
         print(i['snippet'])
     return data
-
