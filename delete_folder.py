@@ -2,6 +2,13 @@ import os
 #delete folder in location with name
 location = str(input(''))
 name = str(input(''))
-c = 'rm -R ~/'+location+'/'+name
-os.system(c)
+list1 = str.split(location)
+c = '~/'
+l = len(list1)
+i=0
+while i<l :
+	c = ''.join([c,list1[i],'/'])
+	i = i+1
+com = 'rm -R '+c+name
+os.system(com)
 
