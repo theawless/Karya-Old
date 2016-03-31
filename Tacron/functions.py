@@ -42,3 +42,17 @@ def google_search(text):
         print(i['link'])
         print(i['snippet'])
     return data
+
+def music(action):
+    if action == 'play':
+        os.system('rhythmbox-client --play-pause')
+    elif action == 'pause':
+        os.system('rhythmbox-client --play-pause')
+    elif action == 'next song':
+        os.system('rhythmbox-client --next')
+    elif action =='previous song':
+        os.system('rhythmbox-client --previous')
+    elif action == 'increase volume':
+        os.system('rhythmbox-client --volume-up')
+    elif action == 'decrease volume':
+        os.system('rhythmbox-client --volume-down')
