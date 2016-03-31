@@ -3,17 +3,20 @@ import sys
 from homepage import HomePage
 from settingspage import PluginSettings
 from settingspage import ConfigurePage
+from setlog import logger
+
+app_path = ''
 
 
-class MainWindow(Gtk.ApplicationWindow):
-    # constructor: the title is "Welcome to GNOME" and the window belongs
-    # to the application app
+class TacronHandler:
+    def __init__(self):
+        self.shell_ui = Gtk.Builder()
+        # Gtk.ApplicationWindow.show_all()
+        self.shell_ui.add_from_file("shellui.glade")
+        logger.debug("Hello")
 
-    def __init__(self, app):
-        Gtk.Window.__init__(self, title="Tacron", application=app)
-
-        # change windows from here
-        self.add(ConfigurePage().get_configure_box())
+    def get_window(self):
+        return self.shell_ui.get_object("tacron_window")
 
 
 class Tacron(Gtk.Application):
@@ -22,10 +25,12 @@ class Tacron(Gtk.Application):
     def __init__(self):
         Gtk.Application.__init__(self)
         PluginSettings()
+        self.window_handler = TacronHandler()
 
     def do_activate(self):
-        win = MainWindow(self)
-        win.show_all()
+        window = self.window_handler.get_window()
+        window.show_all()
+        self.add_window(window)
 
     def do_startup(self):
         Gtk.Application.do_startup(self)
