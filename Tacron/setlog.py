@@ -2,7 +2,7 @@
 
 import logging
 
-logger = logging.getLogger('dictonator')
+logger = logging.getLogger('Tacron')
 path = ''
 
 

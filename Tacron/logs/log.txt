@@ -1,2 +1,39 @@
 MainThread - DEBUG - Setlog logger setup done
-MainThread - DEBUG - get configure box
+MainThread - DEBUG - Setlog logger setup done
+MainThread - DEBUG - (51, 150)
+MainThread - DEBUG - Setlog logger setup done
+MainThread - DEBUG - (51, 150)
+MainThread - DEBUG - Setlog logger setup done
+MainThread - DEBUG - (51, 150)
+MainThread - DEBUG - Setlog logger setup done
+MainThread - DEBUG - (51, 150)
+MainThread - DEBUG - Setlog logger setup done
+MainThread - DEBUG - (51, 150)
+MainThread - DEBUG - Setlog logger setup done
+MainThread - DEBUG - Setlog logger setup done
+MainThread - DEBUG - Setlog logger setup done
+MainThread - DEBUG - Setlog logger setup done
+MainThread - DEBUG - Setlog logger setup done
+MainThread - DEBUG - Setlog logger setup done
+MainThread - DEBUG - Setlog logger setup done
+MainThread - DEBUG - Setlog logger setup done
+MainThread - DEBUG - (51, 150)
+MainThread - DEBUG - Setlog logger setup done
+MainThread - DEBUG - Setlog logger setup done
+MainThread - DEBUG - Setlog logger setup done
+MainThread - DEBUG - Setlog logger setup done
+MainThread - DEBUG - Setlog logger setup done
+MainThread - DEBUG - Setlog logger setup done
+MainThread - DEBUG - Setlog logger setup done
+MainThread - DEBUG - Setlog logger setup done
+MainThread - DEBUG - (51, 150)
+MainThread - DEBUG - Setlog logger setup done
+MainThread - DEBUG - Setlog logger setup done
+MainThread - DEBUG - Setlog logger setup done
+MainThread - DEBUG - (51, 150)
+MainThread - DEBUG - Setlog logger setup done
+MainThread - DEBUG - Setlog logger setup done
+MainThread - DEBUG - Setlog logger setup done
+MainThread - DEBUG - Setlog logger setup done
+MainThread - DEBUG - Setlog logger setup done
+MainThread - DEBUG - Setlog logger setup done

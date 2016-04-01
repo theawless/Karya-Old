@@ -1,8 +1,7 @@
-from gi.repository import Gtk
-from setlog import logger
-import configparser
+import copy
 
-app_path = ''
+from gi.repository import Gtk
+import configparser
 
 
 class PluginSettings:
@@ -28,7 +27,7 @@ class PluginSettings:
     def load_settings(cls):
         # Get the configuration from file and return a dictionary
         config = PluginSettings.default_settings()
-        config.read(app_path + 'config.ini')
+        config.read('shell/config.ini')
         dictionary = {}
         for section in config.sections():
             dictionary[section] = {}
@@ -47,33 +46,34 @@ class PluginSettings:
         config['IBM'] = {'username': settings['IBM']['username'], 'password': settings['IBM']['password']}
         config['ATT'] = {'app_key': settings['ATT']['app_key'], 'app_secret': settings['ATT']['app_secret']}
         # Write new values to the configuration file
-        with open(app_path + 'config.ini', 'w+') as configfile:
+        with open('shell/config.ini', 'w+') as configfile:
             config.write(configfile)
             # logger.debug("Saved settings")
 
-    @classmethod
-    def stop(cls):
-        del cls.settings
-
 
 class ConfigurePage:
-    def __init__(self):
-        self.settings = PluginSettings.settings
+    def __init__(self, window):
+        self.settings = copy.deepcopy(PluginSettings.settings)
         self.ui = Gtk.Builder()
-        self.ui.add_from_file(app_path + "configurepageui.glade")
+        self.ui.add_from_file("shell/configureui.glade")
+        self.setup_dialog()
 
-    def get_configure_box(self):
-        # The actual caller for this class
-        logger.debug("get configure box")
+        self.dialog = self.ui.get_object("configure_dialog")
+        self.dialog.set_transient_for(window)
+        self.dialog.show_all()
+
+    def setup_dialog(self):
+        # Setup everything
         self._get_saved_into_text_boxes()
         self._choose_labelled_input_boxes()
         self._connect_everything()
         self._configure_radios()
-        return self.ui.get_object("full_box")
+
+    def on_close_dialog(self, button):
+        self.dialog.destroy()
 
     def _get_saved_into_text_boxes(self):
         _settings = self.settings
-        print(_settings)
         self.ui.get_object("google_key_entry").set_text(_settings['Google']['api_key'])
         self.ui.get_object("witai_key_entry").set_text(_settings['WITAI']['api_key'])
         self.ui.get_object("ibm_username_entry").set_text(_settings['IBM']['username'])
@@ -90,6 +90,7 @@ class ConfigurePage:
         self.ui.get_object("ibm_radio").connect("toggled", self._radio_callback, "IBM")
         self.ui.get_object("save_button").connect("clicked", self._confirm_config)
         self.ui.get_object("default_button").connect("clicked", self._set_default_config)
+        self.ui.get_object("close_button").connect("clicked", self.on_close_dialog)
 
     def _configure_radios(self):
         # Load the radio buttons with settings

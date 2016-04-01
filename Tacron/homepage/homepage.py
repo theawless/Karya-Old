@@ -1,8 +1,8 @@
 import gi
 import threading
-from textanalyser import TextAnalyser
-from functions import *
-from settingspage import PluginSettings
+from homepage.textanalyser import TextAnalyser
+from homepage.functions import *
+from shell.configure import PluginSettings
 
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk, WebKit

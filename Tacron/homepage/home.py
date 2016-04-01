@@ -1,7 +1,7 @@
 import gi
 import threading
-from text_analyser import text_analyser
-from functions import *
+from homepage.textanalyser import TextAnalyser
+from homepage.functions import *
 
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk, WebKit
