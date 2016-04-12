@@ -5,20 +5,28 @@ import urllib
 
 
 def localsearch(search_keywords):
-    search_result_filepaths = [0] * 2000
-    search_result_filenames = [0] * 2000
+    # search_result_filepaths = [0] * 2000
+    # search_result_filenames = [0] * 2000
+    search_result_filepaths = ["" for x in range(2000)]
+    search_result_filenames = ["" for x in range(2000)]
+    l1 = []
+    l2 = []
     i = 0
     for root, dirs, files in os.walk('../../../../'):
         for file in files:
             if search_keywords in file:
-                print(file + ' and ')
+                # print(file + ' and ')
                 # Getting full path of the file
-                print(os.path.join(root, file))
+                # print(os.path.join(root, file))
                 filepathh = os.path.join(root, file)
                 search_result_filenames[i] = file
+                l1.append(file)
+                l2.append(filepathh)
+                print(search_result_filenames[i])
                 search_result_filepaths[i] = filepathh
                 i += 1
-    return search_result_filepaths, search_result_filenames
+    #return search_result_filepaths, search_result_filenames
+    return l1, l2
 
 
 def open_file_in_default_application(file_path):
