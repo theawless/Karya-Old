@@ -20,12 +20,12 @@ def localsearch(search_keywords):
                 # print(os.path.join(root, file))
                 filepathh = os.path.join(root, file)
                 search_result_filenames[i] = file
-                l1.append(file)
-                l2.append(filepathh)
+                l1.append(str(file))
+                l2.append(str(filepathh))
                 print(search_result_filenames[i])
                 search_result_filepaths[i] = filepathh
                 i += 1
-    #return search_result_filepaths, search_result_filenames
+    # return search_result_filepaths, search_result_filenames
     return l1, l2
 
 
@@ -51,6 +51,7 @@ def google_search(text):
         print(i['snippet'])
     return data
 
+
 def music(action):
     if action == 'play':
         os.system('rhythmbox-client --play-pause')
@@ -58,7 +59,7 @@ def music(action):
         os.system('rhythmbox-client --play-pause')
     elif action == 'next song':
         os.system('rhythmbox-client --next')
-    elif action =='previous song':
+    elif action == 'previous song':
         os.system('rhythmbox-client --previous')
     elif action == 'increase volume':
         os.system('rhythmbox-client --volume-up')
