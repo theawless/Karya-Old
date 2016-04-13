@@ -1,3 +1,4 @@
+#!/usr/bin/python
 
 import MySQLdb
 import config   # config file has db configuration as username,password etc
@@ -7,8 +8,12 @@ database = MySQLdb.connect(config.settings['host'],config.settings['user'],confi
 
 cursor = database.cursor()
 
-sql = "CREATE DATABASE IF NOT EXISTS TESTDB"
+sql = "SELECT VERSION()"
 
 cursor.execute(sql)
 
-print("No error and warning means that query exceuted successfully.")
+result = cursor.fetchone()
+
+print "MySql Database version is : %s " % result
+
+database.close()

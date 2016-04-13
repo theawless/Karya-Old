@@ -3,16 +3,21 @@
 import MySQLdb
 import config   # config file has db configuration as username,password etc
 
-database = MySQLdb.connect(config.settings['host'],config.settings['user'],\
-   config.settings['password'],config.settings['database_name'] )
+def delete(index):
+	database = MySQLdb.connect(config.settings['host'],config.settings['user'],\
+	   config.settings['password'],config.settings['database_name'] )
 
-cursor = database.cursor()
+	print(index)
+	cursor = database.cursor()
 
-sql = "DELETE FROM SCRIPTS WHERE Name = 'Shutdown'"
-try:
-   cursor.execute(sql)
-   database.commit()
-except:
-   database.rollback()
+	sql = "DELETE FROM `SCRIPTS` WHERE `Id` = %s"
+	try:
+	   cursor.execute(sql,(int(index),))
+	   database.commit()
+	except MySQLdb.Error as e:
+		print ("MySQL Error [%d]: %s" % (e.args[0], e.args[1]))
+		database.rollback()
 
-database.close()
+	database.close()
+
+delete(2)

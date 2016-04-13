@@ -10,13 +10,15 @@ cursor = database.cursor()
 
 sql = """INSERT INTO SCRIPTS
 		(Name,
-         file_location, 
+         file_location,
+         script_code, 
          Applications_involved, 
          Need_Sudo_Permission)
          
          VALUES 
          ('Shutdown', 
          '/home/sjha/development/cs243Project/team4cs243/scripts/shutdown',
+         'print("Hello world")',
          'System', 
          1)"""
 try:

@@ -1,19 +1,35 @@
-#!/usr/bin/python
+import gi
+gi.require_version('Gtk', '3.0')
+from gi.repository import Gtk
+import fetchData
+import delete
 
-import MySQLdb
-import config   # config file has db configuration as username,password etc
+class LabelWindow(Gtk.Window):
 
-database = MySQLdb.connect(config.settings['host'],config.settings['user'],config.settings['password']\
-	,config.settings['database_name'] )
+    def __init__(self):
+        Gtk.Window.__init__(self, title="Label Example")
+        
+        hbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL,spacing=10)
+        hbox.set_homogeneous(False)
+        tasks = fetchData.fetchData()
+        for task in tasks:
+            tempBox = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL,spacing=10)
+            tempLabel = Gtk.Label(task["name"])
 
-cursor = database.cursor()
+            tempButton = Gtk.Button.new_with_label("Delete Task")
+            tempButton.connect("clicked", self.on_click_me_clicked,int(task["index"]))
 
-sql = "SELECT VERSION()"
+            tempBox.pack_start(tempLabel, True, True, 0)
+            tempBox.pack_start(tempButton, True, True, 0)
 
-cursor.execute(sql)
+            hbox.pack_start(tempBox,True,True,0)
 
-result = cursor.fetchone()
+        self.add(hbox)
 
-print "MySql Database version is : %s " % result
+    def on_click_me_clicked(self,button,index):
+        delete.delete(index)
 
-database.close()
+window = LabelWindow()        
+window.connect("delete-event", Gtk.main_quit)
+window.show_all()
+Gtk.main()

@@ -12,6 +12,7 @@ sql = """CREATE TABLE  IF NOT EXISTS SCRIPTS (
 		 Id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
          Name  varchar(255) NOT NULL,
          file_location  varchar(255),
+         script_code text,
          Applications_involved varchar(500),  
          Need_Sudo_Permission int
  		)"""
