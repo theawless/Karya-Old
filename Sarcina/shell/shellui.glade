@@ -2,16 +2,16 @@
 <!-- Generated with glade 3.18.3 -->
 <interface>
   <requires lib="gtk+" version="3.10"/>
-  <object class="GtkApplicationWindow" id="tacron_window">
+  <object class="GtkApplicationWindow" id="sarcina_window">
     <property name="can_focus">False</property>
-    <property name="title" translatable="yes">Tacron</property>
+    <property name="title" translatable="yes">Sarcina</property>
     <property name="window_position">center</property>
     <property name="default_width">700</property>
     <property name="default_height">500</property>
-    <property name="icon_name">dictonator</property>
+    <property name="icon_name">sarcina</property>
     <property name="has_resize_grip">True</property>
     <child>
-      <object class="GtkBox" id="tacron_full_box">
+      <object class="GtkBox" id="sarcina_full_box">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="orientation">vertical</property>
@@ -110,7 +110,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkNotebook" id="tacron_notebook">
+          <object class="GtkNotebook" id="sarcina_notebook">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <child>
