@@ -1,8 +1,6 @@
 import gi
-from _cffi_backend import string
 
-import subprocess
-from functions import localsearch
+from .functions import localsearch, open_file_shown_in_search_result
 
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk, WebKit
@@ -37,62 +35,54 @@ class HomepageHandler:
         #    pass
 
 
+def on_search_btn_clicked(button, builder):
+    print("LOL")
+    # google_search()
+    # local_search_view_scrolled_window = builder.get_object("local_search_view_scrolled_window")
+    # localsearchscrollview = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=6)
+    # print("Searching in local files inside function...")
+    # i = 0
+    # searched = ".pdf"
+    # # google_search()
+    # search_result_filepaths, search_result_filenames = localsearch(searched)
+    # for _ in search_result_filepaths:
+    #     button = Gtk.Button.new_with_label((search_result_filepaths[i]))
+    #     print(search_result_filenames[i])
+    #     button.connect("clicked", open_file_shown_in_search_result, search_result_filenames[i])
+    #     localsearchscrollview.pack_start(button, True, True, 0)
+    #     i += 1
+    # local_search_view_scrolled_window.add(localsearchscrollview)
+
+
 class HomePage:
     def __init__(self):
         pass
 
-    def open_file_shown_in_search_result(self, button, filepathh):
-        # open_file_in_default_application(filepathh)
-        print("Path is " + filepathh)
-        subprocess.call(["xdg-open", filepathh])
+    def get_homepage_box(self):
+        builder_homepage = Gtk.Builder()
 
-    def get_homepage(self):
-        builder = Gtk.Builder()
+        builder_homepage.add_from_file("homepage/homepageui.glade")
+        builder_homepage.connect_signals(HomepageHandler())
 
-        builder.add_from_file("homepageui.glade")
-        builder.connect_signals(HomepageHandler())
+        home_page_full_box = builder_homepage.get_object("home_box")
+        webview = builder_homepage.get_object("webview_scrolled_window")
+        search_btn = builder_homepage.get_object("btn_search")
 
-        home_page_full_box = builder.get_object("home_box")
-        webview = builder.get_object("webview_scrolled_window")
-        local_search_view_scrolled_window = builder.get_object("local_search_view_scrolled_window")
+        search_btn.connect("clicked", on_search_btn_clicked, builder_homepage)
 
-        # local_search_view.add(button_search)
         view = WebKit.WebView()
         webview.add(view)
         view.open("http://www.google.com")
         webview.add(view)
 
-        # scrolled_parent = Gtk.ScrolledWindow()
-        # scrolled_parent.set_policy(Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC)
-        # scrolled_parent.add(localsearchscrollview)
-        localsearchscrollview = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=6)
-        # scrolled = Gtk.ScrolledWindow()
-        # scrolled.set_policy(Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC)
-        print("Searching in local files inside function...")
-        i = 0
-        searched = ".pdf"
-        # google_search()
-        search_result_filepaths, search_result_filenames = localsearch(searched)
-        assert isinstance(search_result_filepaths, object)
+        return home_page_full_box
 
-        for s in search_result_filepaths:
-            button = Gtk.Button.new_with_label((search_result_filepaths[i]))
-            print(search_result_filenames[i])
-            button.connect("clicked", self.open_file_shown_in_search_result, search_result_filenames[i])
-            localsearchscrollview.pack_start(button, True, True, 0)
-            i += 1
-        local_search_view_scrolled_window.add(localsearchscrollview)
-
-        win = Gtk.Window()
-        win.add(home_page_full_box)
-        win.connect("delete-event", Gtk.main_quit)
-        win.show_all()
-        Gtk.main()
+        # win = Gtk.Window()
+        # win.add(home_page_full_box)
+        # win.connect("delete-event", Gtk.main_quit)
+        # win.show_all()
+        # Gtk.main()
 
 
-        # x = builder.get_object("home_pane")
-        # return x
-
-
-h = HomePage()
-h.get_homepage()
+# h = HomePage()
+# h.get_homepage()

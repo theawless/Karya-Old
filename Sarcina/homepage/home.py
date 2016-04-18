@@ -12,6 +12,7 @@ class HomeWindow():
         Gtk.Window.__init__(self, title="Home")
         self.set_size_request(950, 600)
         scrolled = Gtk.ScrolledWindow()
+
         scrolled.set_policy(Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC)
         self.add(scrolled)
         #

@@ -33,6 +33,11 @@ def open_file_in_default_application(file_path):
     subprocess.call(["xdg-open", file_path])
 
 
+def open_file_shown_in_search_result(button, filepathh):
+    print("Path is " + filepathh)
+    open_file_in_default_application(filepathh)
+
+
 def google_search(text):
     url = "https://www.googleapis.com/customsearch/v1?key=AIzaSyDKXPuaXh84T_tVVQcxQdbQS8TzNk2uuuU" \
           + "%20&cx=017576662512468239146:omuauf_lfve&q="
