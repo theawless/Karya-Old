@@ -1,7 +1,7 @@
 import json
 import os
 import subprocess
-import urllib
+import urllib.request
 
 
 def localsearch(search_keywords):
@@ -9,8 +9,7 @@ def localsearch(search_keywords):
     # search_result_filenames = [0] * 2000
     search_result_filepaths = ["" for x in range(2000)]
     search_result_filenames = ["" for x in range(2000)]
-    l1 = []
-    l2 = []
+    l =[]
     i = 0
     for root, dirs, files in os.walk('../../../../'):
         for file in files:
@@ -18,15 +17,15 @@ def localsearch(search_keywords):
                 # print(file + ' and ')
                 # Getting full path of the file
                 # print(os.path.join(root, file))
-                filepathh = os.path.join(root, file)
+                filepath = os.path.join(root, file)
                 search_result_filenames[i] = file
-                l1.append(str(file))
-                l2.append(str(filepathh))
+                tup = str(filepath),str(file)
+                l.append(tup)
                 print(search_result_filenames[i])
-                search_result_filepaths[i] = filepathh
+                search_result_filepaths[i] = filepath
                 i += 1
     # return search_result_filepaths, search_result_filenames
-    return l1, l2
+    return l
 
 
 def open_file_in_default_application(file_path):
@@ -45,7 +44,7 @@ def google_search(text):
     search_keywords = ""
     for word in words_to_search:
         search_keywords += word + '+'
-        url = url + search_keywords
+    url = url + search_keywords
     print("URL is : " + url)
     response = urllib.request.urlopen(url)
     content = response.read()

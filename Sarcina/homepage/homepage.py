@@ -1,9 +1,8 @@
 import gi
-
-from .functions import localsearch, open_file_shown_in_search_result
+from .functions import localsearch, open_file_shown_in_search_result, google_search
 
 gi.require_version('Gtk', '3.0')
-from gi.repository import Gtk, WebKit
+from gi.repository import Gtk, WebKit, Pango
 
 
 class HomepageHandler:
@@ -12,7 +11,6 @@ class HomepageHandler:
 
     def on_btn_search_clicked(self, button):
         print("Search button :D :D")
-
         # def on_entrybuffer1_deleted_text(self, entrybuffer):
         #     pass
         #
@@ -35,23 +33,32 @@ class HomepageHandler:
         #    pass
 
 
-def on_search_btn_clicked(button, builder):
+def on_search_btn_clicked(button, builder, search_entry):
     print("LOL")
-    # google_search()
-    # local_search_view_scrolled_window = builder.get_object("local_search_view_scrolled_window")
-    # localsearchscrollview = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=6)
-    # print("Searching in local files inside function...")
-    # i = 0
-    # searched = ".pdf"
-    # # google_search()
-    # search_result_filepaths, search_result_filenames = localsearch(searched)
-    # for _ in search_result_filepaths:
-    #     button = Gtk.Button.new_with_label((search_result_filepaths[i]))
-    #     print(search_result_filenames[i])
-    #     button.connect("clicked", open_file_shown_in_search_result, search_result_filenames[i])
-    #     localsearchscrollview.pack_start(button, True, True, 0)
-    #     i += 1
-    # local_search_view_scrolled_window.add(localsearchscrollview)
+    input_text = search_entry.get_text()
+    # google_search(input_text)
+
+    list_box = builder.get_object("list_box")
+
+    print("Searching in local files inside function...")
+    searched = input_text
+    #google_search()
+    tup_list = localsearch(searched)
+    for (filepath, filename) in tup_list:
+        label = Gtk.Label(filename)
+        label.set_single_line_mode(True)
+        label.set_line_wrap_mode(Pango.WrapMode.CHAR)
+        button = Gtk.Button.new_with_label("Open")
+        button.connect("clicked", open_file_shown_in_search_result, filename)
+        row = Gtk.ListBoxRow()
+        hbox = Gtk.HBox()
+        hbox.set_homogeneous(True)
+        hbox.pack_start(label, True, True, 0)
+        hbox.pack_start(button, True, False, 0)
+        row.add(hbox)
+        list_box.prepend(row)
+
+    list_box.show_all()
 
 
 class HomePage:
@@ -67,8 +74,9 @@ class HomePage:
         home_page_full_box = builder_homepage.get_object("home_box")
         webview = builder_homepage.get_object("webview_scrolled_window")
         search_btn = builder_homepage.get_object("btn_search")
+        search_entry = builder_homepage.get_object("search_entry")
 
-        search_btn.connect("clicked", on_search_btn_clicked, builder_homepage)
+        search_btn.connect("clicked", on_search_btn_clicked, builder_homepage, search_entry)
 
         view = WebKit.WebView()
         webview.add(view)
@@ -76,13 +84,3 @@ class HomePage:
         webview.add(view)
 
         return home_page_full_box
-
-        # win = Gtk.Window()
-        # win.add(home_page_full_box)
-        # win.connect("delete-event", Gtk.main_quit)
-        # win.show_all()
-        # Gtk.main()
-
-
-# h = HomePage()
-# h.get_homepage()
