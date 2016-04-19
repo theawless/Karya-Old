@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated with glade 3.16.1 -->
+<interface>
+  <requires lib="gtk+" version="3.10"/>
+  <object class="GtkNotebook" id="Tacron_Notebook">
+    <property name="visible">True</property>
+    <property name="can_focus">True</property>
+    <child>
+      <placeholder/>
+    </child>
+    <child type="tab">
+      <object class="GtkLabel" id="Home">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="label" translatable="yes">Home</property>
+        <property name="width_chars">12</property>
+        <property name="angle">0.0099999997764825821</property>
+        <property name="max_width_chars">12</property>
+      </object>
+      <packing>
+        <property name="tab_fill">False</property>
+        <property name="detachable">True</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkBox" id="box2">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="orientation">vertical</property>
+        <child>
+          <placeholder/>
+        </child>
+        <child>
+          <placeholder/>
+        </child>
+        <child>
+          <placeholder/>
+        </child>
+      </object>
+      <packing>
+        <property name="position">1</property>
+      </packing>
+    </child>
+    <child type="tab">
+      <object class="GtkLabel" id="Tasker">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="label" translatable="yes">Tasker</property>
+        <property name="width_chars">12</property>
+        <property name="angle">0.01</property>
+        <property name="max_width_chars">12</property>
+      </object>
+      <packing>
+        <property name="position">1</property>
+        <property name="tab_fill">False</property>
+      </packing>
+    </child>
+    <child>
+      <placeholder/>
+    </child>
+    <child type="tab">
+      <placeholder/>
+    </child>
+  </object>
+  <object class="GtkEntryBuffer" id="entrybuffer1">
+    <signal name="deleted-text" handler="on_entrybuffer1_deleted_text" swapped="no"/>
+    <signal name="inserted-text" handler="on_entrybuffer1_inserted_text" swapped="no"/>
+  </object>
+  <object class="GtkEntryCompletion" id="entrycompletion1">
+    <signal name="action-activated" handler="on_entrycompletion1_action_activated" swapped="no"/>
+    <signal name="cursor-on-match" handler="on_entrycompletion1_cursor_on_match" swapped="no"/>
+    <signal name="insert-prefix" handler="on_entrycompletion1_insert_prefix" swapped="no"/>
+    <signal name="match-selected" handler="on_entrycompletion1_match_selected" swapped="no"/>
+  </object>
+  <object class="GtkBox" id="VerticalBox">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="orientation">vertical</property>
+    <child>
+      <object class="GtkLabel" id="Label">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="label" translatable="yes">Search your computer and online resources</property>
+        <property name="ellipsize">start</property>
+        <property name="width_chars">12</property>
+        <property name="max_width_chars">12</property>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="fill">True</property>
+        <property name="padding">14</property>
+        <property name="position">0</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkSearchEntry" id="SearchEntry">
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="buffer">entrybuffer1</property>
+        <property name="primary_icon_name">edit-find-symbolic</property>
+        <property name="primary_icon_activatable">False</property>
+        <property name="primary_icon_sensitive">False</property>
+        <property name="completion">entrycompletion1</property>
+        <property name="input_hints">GTK_INPUT_HINT_WORD_COMPLETION | GTK_INPUT_HINT_NONE</property>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="fill">True</property>
+        <property name="position">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkBox" id="box1">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="baseline_position">top</property>
+        <child>
+          <object class="GtkButton" id="btn_search">
+            <property name="label" translatable="yes">Search</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <signal name="clicked" handler="on_btn_search_clicked" swapped="no"/>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="padding">3</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="button1">
+            <property name="label" translatable="yes">button</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <signal name="clicked" handler="on_button1_clicked" swapped="no"/>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="label3">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">                                                                                                                                            </property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">2</property>
+          </packing>
+        </child>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="fill">False</property>
+        <property name="position">2</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label2">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="label" translatable="yes">   </property>
+      </object>
+      <packing>
+        <property name="expand">True</property>
+        <property name="fill">False</property>
+        <property name="position">3</property>
+      </packing>
+    </child>
+  </object>
+</interface>
+
