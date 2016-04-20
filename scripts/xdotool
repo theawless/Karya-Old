@@ -1,0 +1,11 @@
+Simulate key press
+xdotool key [name of the key]
+and to chain to keys use + operator.
+
+
+for mouse click use
+xdotool mousemove x y click n
+n=1;left click
+n=2; scroll
+n=3; right click
+x y position of cursor in pixels.
