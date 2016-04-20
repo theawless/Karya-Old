@@ -9,3 +9,5 @@ n=1;left click
 n=2; scroll
 n=3; right click
 x y position of cursor in pixels.
+
+To use multiple mousemove commond use && operator and use sleep i (i=1,2,..). For more see next_imageviewer.py
