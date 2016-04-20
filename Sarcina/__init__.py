@@ -7,6 +7,8 @@ from shell.aboutpage import AboutPage
 from shell.configure import ConfigurableDialog
 from shell.configure import PluginSettings
 from homepage.homepage import HomePage
+from taskerpage.taskerpage import TaskerPage
+
 
 class SarcinaHandler:
     def __init__(self, shell_ui):
@@ -32,8 +34,11 @@ class Sarcina(Gtk.Application):
     def do_activate(self):
         window = self.shell_ui.get_object("sarcina_window")
         homepage_box = self.shell_ui.get_object("home_notebook_box")
+        taskerpage_box = self.shell_ui.get_object("tasker_notebook_box")
         home = HomePage()
+        tasker = TaskerPage()
         homepage_box.add(home.get_homepage_box())
+        taskerpage_box.add(tasker.get_taskerpage_box())
         self.add_window(window)
         window.show_all()
 
