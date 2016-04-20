@@ -6,5 +6,3 @@ output = {"repeat" : 5 ,
 			"music" : "play",
 			}
 		}
-
-print("hello")
