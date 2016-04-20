@@ -14,7 +14,7 @@ def show_local_search_result(builder, input_text):
         label.set_single_line_mode(True)
         label.set_line_wrap_mode(Pango.WrapMode.CHAR)
         button = Gtk.Button.new_with_label("Open")
-        button.connect("clicked", open_file_shown_in_search_result, filename)
+        button.connect("clicked", open_file_shown_in_search_result, filepath)
         row = Gtk.ListBoxRow()
         hbox = Gtk.HBox()
         hbox.set_homogeneous(True)
