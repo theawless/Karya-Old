@@ -1,3 +1,3 @@
 import os
-def runScript():
-	os.system("python3 generatedScript.py")
+
+os.system("python3 chutiyapa.py")
