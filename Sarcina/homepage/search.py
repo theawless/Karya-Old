@@ -2,8 +2,14 @@ import gi
 from gi.repository import Gtk, Pango
 
 from homepage.functions import open_file_shown_in_search_result, local_search, google_search
+import urllib
 
 gi.require_version('Gtk', '3.0')
+
+
+def clean(widget_view):
+    for widget in widget_view:
+        widget.destroy()
 
 
 def show_local_search_result(builder, input_text):
@@ -15,6 +21,7 @@ def show_local_search_result(builder, input_text):
     :return: NULL
     """
     search_res_listbox = builder.get_object("list_box")
+    clean(search_res_listbox)
     tup_list = local_search(input_text)
     for (path, name) in tup_list:
         label = Gtk.Label(name)
@@ -41,6 +48,8 @@ def show_google_results(builder, text):
     :return: NULL
     """
     web_res = builder.get_object("web_res_listbox")
+    clean(web_res)
+    #try:
     data = google_search(text)
     for i in data['items']:
         label_title = Gtk.Label()
@@ -56,6 +65,8 @@ def show_google_results(builder, text):
         print(i['title'])
         print(i['link'])
         print(i['snippet'])
+    #except urllib.error.URLError:
+    #    print("Check proxy!! urllib.error.URLError in google search :(  :( ")
     web_res.show_all()
 
 
@@ -63,6 +74,7 @@ class Search:
     """
     This class represent a class for search query
     """
+
     def __init__(self, text):
         """
         creates the variable associated with the class

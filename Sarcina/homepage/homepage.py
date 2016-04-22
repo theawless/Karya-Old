@@ -24,27 +24,7 @@ class HomepageHandler:
         pass
 
     def on_btn_search_clicked(self, button):
-        print("Search button :D :D")
-        # def on_entrybuffer1_deleted_text(self, entrybuffer):
-        #     pass
-        #
-        # def on_entrybuffer1_inserted_text(self, entrybuffer):
-        #     pass
-        #
-        # def on_entrycompletion1_action_activated(self, entrycompletion):
-        #     pass
-        #
-        # def on_entrycompletion1_cursor_on_match(self, entrycompletion):
-        #     pass
-        #
-        # def on_entrycompletion1_insert_prefix(self, entrycompletion):
-        #     pass
-        #
-        # def on_entrycompletion1_match_selected(self, entrycompletion):
-        #     pass
-        #
-        # def on_SearchEntry_insert_text(self, SearchEntry):
-        #    pass
+        pass
 
 
 def on_search_btn_clicked(button, builder, search_entry):
@@ -72,13 +52,32 @@ class HomePage:
         :return: NULL
         """
         self.builder = Gtk.Builder()
+        self.builder.add_from_file("homepage/homepageui.glade")
+        self.builder.connect_signals(HomepageHandler())
+        self.search_entry = self.builder.get_object("search_entry")
+        self.search_btn = self.builder.get_object("btn_search")
+        self.home_page_full_box = self.builder.get_object("home_box")
+        self.status_label = self.builder.get_object("status_label")
+        self.recognised_text = ""
+        self.start_recog()
+
+    def start_recog(self):
         time.sleep(1)
-        self.recogniser = SpeechRecogniser(self.search_entry_bar_text_changer)
+        recogniser = SpeechRecogniser(self.do_after_recog, self.status_text_set)
         logger.debug("Constructed recogniser, Inside __init__ of homepage")
-        self.threader = threading.Thread(target=self.recogniser.start_recognising)
-        self.threader.daemon = True
-        self.threader.start()
-        pass
+        threader = threading.Thread(target=recogniser.start_recognising)
+        threader.daemon = True
+        threader.start()
+
+    def do_after_recog(self, text: str):
+        self.recognised_text = text
+        self.analyse_text()
+        self.search_entry_bar_text_changer(self.recognised_text)
+
+    def analyse_text(self):
+        self.status_text_set("Recognised text" + self.recognised_text)
+        output = Search(self.recognised_text)
+        output.show(self.builder)
 
     def search_entry_bar_text_changer(self, text: str):
         """
@@ -90,23 +89,19 @@ class HomePage:
         search_entry = self.builder.get_object("search_entry")
         search_entry.set_text(text)
 
+    def status_text_set(self, text: str):
+        """
+        displays the recognized text in search entry
+        :type text: basestring
+        :param text: recognized text
+        :return: Null
+        """
+        self.status_label.set_text(text)
+
     def get_homepage_box(self):
         """
         creates view of homepage tab of notebook and connects its signals to implemented functions.
         :return: Gtk box widget
         """
-        self.builder.add_from_file("homepage/homepageui.glade")
-        self.builder.connect_signals(HomepageHandler())
-
-        home_page_full_box = self.builder.get_object("home_box")
-        search_btn = self.builder.get_object("btn_search")
-        search_entry = self.builder.get_object("search_entry")
-
-        search_btn.connect("clicked", on_search_btn_clicked, self.builder, search_entry)
-
-        # view = WebKit.WebView()
-        # webview.add(view)
-        # view.open("http://www.google.com")
-        # webview.add(view)
-
-        return home_page_full_box
+        self.search_btn.connect("clicked", on_search_btn_clicked, self.builder, self.search_entry)
+        return self.home_page_full_box

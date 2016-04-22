@@ -1,24 +1,5 @@
-# Dict'O'nator - A dictation plugin for gedit.
-# Copyright (C) <2016>  <Abhinav Singh>
-#
-# This file is part of Dict'O'nator.
-#
-# Dict'O'nator is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# Dict'O'nator is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with Dict'O'nator.  If not, see <http://www.gnu.org/licenses/>.
-
-import time
-
 import speech_recognition as sr
+import time
 from gi.repository import GLib
 
 from setlog import logger
@@ -28,14 +9,9 @@ class SpeechRecogniser:
     """Voice recogniser class."""
 
     # this is called from the background thread
-    def __init__(self, search_entry_bar_changer: callable):
-        """Constructor.
-
-        :param search_entry_bar_changer: change the bottom bar main text.
-        :param f_action_handler: do action based on received text.
-        """
-        self.search_entry_text_set = search_entry_bar_changer
-
+    def __init__(self, do_after_recog: callable, status_text_set):
+        self.status_text_set = status_text_set
+        self.execute = do_after_recog
         self.demand_fix_ambient_noise = True
         self.wants_to_run = True
         self.is_listening = False
@@ -54,16 +30,16 @@ class SpeechRecogniser:
                     if self.demand_fix_ambient_noise:
                         logger.debug("lol01")
                         self.demand_fix_ambient_noise = False
-                        GLib.idle_add(self.search_entry_text_set, "Preparing Dict'O'nator")
+                        GLib.idle_add(self.status_text_set, "Preparing Dict'O'nator")
                         self.re.adjust_for_ambient_noise(self.mic, 3)
                     logger.debug("lol02")
-                    # GLib.idle_add(self.search_entry_text_set, "Speak now!")
+                    # GLib.idle_add(self.status_text_set, "Speak now!")
                     time.sleep(0.1)
                 else:
                     logger.debug("lol03")
                     with self.mic as self.source:
                         self.demand_fix_ambient_noise = False
-                        GLib.idle_add(self.search_entry_text_set, "Preparing Dict'O'nator")
+                        GLib.idle_add(self.status_text_set, "Preparing Dict'O'nator")
                         self.re.adjust_for_ambient_noise(self.mic, 3)
                     logger.debug("going to listen in background")
                     self.stop_listening = self.re.listen_in_background(self.mic, self.recog_callback)
@@ -71,9 +47,9 @@ class SpeechRecogniser:
                     # stop_listening is now a function that, when called, stops background listening
             else:
                 if self.is_listening:
-                    GLib.idle_add(self.search_entry_text_set, "Stopping Dictation")
+                    GLib.idle_add(self.status_text_set, "Stopping Dictation")
                     self.stop_listening()
-                    GLib.idle_add(self.search_entry_text_set, "Stopped listening, to start listening press CTRL+ALT+2")
+                    GLib.idle_add(self.status_text_set, "Stopped listening, to start listening press CTRL+ALT+2")
                     self.is_listening = False
                 else:
                     time.sleep(0.1)
@@ -93,17 +69,17 @@ class SpeechRecogniser:
         # Recogniser begins
         if sel == "Sphinx":
             # Use Sphinx as recogniser
-            GLib.idle_add(self.search_entry_text_set, "Got your words! Processing with Sphinx")
+            GLib.idle_add(self.status_text_set, "Got your words! Processing with Sphinx")
             logger.debug("recognize speech using Sphinx")
             try:
-                recognized_text = r.recognize_google(audio)
+                recognized_text = r.recognize_sphinx(audio)
                 logger.debug("From recogSpeech module: " + recognized_text)
             except sr.UnknownValueError:
-                GLib.idle_add(self.search_entry_text_set, "Sphinx could not understand audio")
+                GLib.idle_add(self.status_text_set, "Sphinx could not understand audio")
             except sr.RequestError as e:
-                GLib.idle_add(self.search_entry_text_set, "Sphinx error; {0}".format(e))
+                GLib.idle_add(self.status_text_set, "Sphinx error; {0}".format(e))
             finally:
-                GLib.idle_add(self.search_entry_text_set, recognized_text)
+                GLib.idle_add(self.execute, recognized_text)
         #        if testing:
         #            self.plugin_action_handler(recognized_text)
         # elif sel == "Google":
