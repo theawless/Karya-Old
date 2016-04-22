@@ -4,6 +4,9 @@ import re
 import subprocess
 from datetime import datetime
 
+sys.path.insert(0, '/home/sjha/development/cs243Project/team4cs243/Sarcina/taskerpage/')
+import scriptWriter
+
 def tryInt(s):
     try: 
         int(s)
@@ -23,6 +26,10 @@ def textanalyser(text):
                             "run_application" : "",
                             "search" : "",
                             "play" : "",
+                            "click":{
+                                "x" : "",
+                                "y" : ""
+                            },
                             "calculate" : {
                                 "op1" : "",
                                 "op2" : "",
@@ -54,9 +61,9 @@ def textanalyser(text):
         output["action"]["play"] = " ".join(inputText.split("play",1)[1:])
 
     if "calculate" in list_of_words:
-        op1 = list_of_words[list_of_words["calculate"]+1]
-        op2 = list_of_words[list_of_words["calculate"]+3]
-        operand = list_of_words[list_of_words["calculate"]+2]
+        op1 = list_of_words[list_of_words.index["calculate"]+1]
+        op2 = list_of_words[list_of_words.index["calculate"]+3]
+        operand = list_of_words[list_of_words.index["calculate"]+2]
 
         if(tryInt(op1)):
             output["action"]["calculate"]["op1"] = int(op1)
@@ -72,13 +79,28 @@ def textanalyser(text):
         elif(operand == "/"):
             output["action"]["calculate"]["operand"] = "/"
        
+    if "click" in list_of_words:
+        pos1 = list_of_words[list_of_words.index("click")+1]
+        pos2 = list_of_words[list_of_words.index("click")+2]
+        if(tryInt(pos1)):
+            output["action"]["click"]["x"] = int(pos1)
+        
+        if(tryInt(pos2)):
+            output["action"]["click"]["y"] = int(pos2)
+
+        if(pos1 == "top"):
+            output["action"]["click"]["y"] = 1360
+
+        if(pos2 == "bottom"):
+            output["action"]["click"]["x"] = 755
+
     if "at" in list_of_words:
         state = 1
         time = list_of_words[list_of_words.index("at")+1]
         amOrPm = list_of_words[list_of_words.index("at")+2]
 
         if("pm" in amOrPm):
-            output["time_of_execution"]["day"] = 0
+            output["time_of_execution"]["day"] = datetime.now().day
             if(tryInt(time.split(":")[0])):
                 output["time_of_execution"]["hour"] = int(time.split(":")[0]) + 12
 
@@ -86,7 +108,7 @@ def textanalyser(text):
                 output["time_of_execution"]["minute"] = int(time.split(":")[1])
 
         else:
-            output["time_of_execution"]["day"] = 0
+            output["time_of_execution"]["day"] = datetime.now().day
             if(tryInt(time.split(":")[0])):
                 output["time_of_execution"]["hour"] = int(time.split(":")[0])
 
@@ -96,15 +118,14 @@ def textanalyser(text):
 
     if "after" in list_of_words:
         state = 1
-
         duration = list_of_words[list_of_words.index("after")+1]
         if(tryInt(duration)):
             factor = list_of_words[list_of_words.index("after")+2]
             if(factor == "minute" or factor == "minutes"):
-                output["time_of_execution"]["day"] = 0
+                output["time_of_execution"]["day"] = datetime.now().day
                 tempMinute = int(datetime.now().minute) + int(duration)
                 output["time_of_execution"]["minute"] = tempMinute % 60
-                output["time_of_execution"]["hour"] = int(tempMinute / 60)
+                output["time_of_execution"]["hour"] = datetime.now().hour + int(tempMinute / 60)
             
             elif(factor == "hour" or factor == "hours"):
                 tempHour = int(datetime.now().hour) + int(duration)
@@ -112,13 +133,14 @@ def textanalyser(text):
                 output["time_of_execution"]["hour"] = tempHour % 24
                 output["time_of_execution"]["day"] = datetime.now().day + int(tempHour / 24) 
 
-    if state == "0":
+    if state == 0:
         pass
 
-    if state == "1":
-        pass
-    
+    if state == 1:
+        # write script and sets task
+        scriptWriter.writeScript(output)
+
     return output
 
-output = textanalyser("Repeat 5 times after 20 hours run firefox play audio search kutta ka bachha")
+output = textanalyser("Repeat 3 times after 2 minute run firefox")
 print(output)

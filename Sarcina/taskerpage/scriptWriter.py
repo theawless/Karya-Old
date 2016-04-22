@@ -18,26 +18,34 @@ class CodeBlock():
         return result
 
 def writeScript(Input):
+    print("I am here")
     x = datetime.now()
-    targetScript = open(x+"generatedScript.py","w")
+    name = "generatedScript.py"
+    targetScript = open(name,"w")
 
     importBlock = 'import functions' + "\n"
     repeat = 'for i in range('+str(Input["repeat"])+')'
     actions = []
-    for action, parameter in Input["actions"].items():
+    for action, parameter in Input["action"].items():
     	if(parameter):
-    		if action == "open_file":
-    			actions.append('functions.open_file_in_default_application("'+Input["actions"]["open_file"]+'")')
-    		elif action == "music":
-    			actions.append('functions.music("'+Input["actions"]["music"]+'")')
+            if action == "run_application":
+                actions.append('functions.open_application("'+Input["action"]["run_application"]+'")')
+            elif action == "play":
+                actions.append('functions.music("'+Input["action"]["play"]+'")')
+            
+
     actions.append('print("I am working")')
+    print(actions)
     forblock = CodeBlock(repeat, actions)
     block = CodeBlock('def print_success()', [forblock, 'print ("Def finished")'])
 
     targetScript.write(importBlock)
     targetScript.write(block.__str__())
     targetScript.write('print_success()')
+    targetScript.close()
 
-    runTime = Input.output["time_of_execution"]
+    import taskScheduler
+    taskScheduler.setTask(Input["time_of_execution"]["day"],Input["time_of_execution"]["hour"],Input["time_of_execution"]["minute"]
+        )
 
-os.system("python3 generatedScript.py")
+# os.system("python3 generatedScript.py")

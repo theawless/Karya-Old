@@ -1,5 +1,3 @@
-
-
 import json
 import os
 import subprocess
@@ -26,6 +24,8 @@ def localsearch(search_keywords):
 def open_file_in_default_application(file_path):
     subprocess.call(["xdg-open", file_path])
 
+def open_application(application):
+    os.system(application)
 
 def google_search(text):
     url = "https://www.googleapis.com/customsearch/v1?key=AIzaSyDKXPuaXh84T_tVVQcxQdbQS8TzNk2uuuU" \
