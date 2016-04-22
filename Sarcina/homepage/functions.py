@@ -4,40 +4,51 @@ import subprocess
 import urllib.request
 
 
-def localsearch(search_keywords):
-    # search_result_filepaths = [0] * 2000
-    # search_result_filenames = [0] * 2000
-    search_result_filepaths = ["" for x in range(2000)]
-    search_result_filenames = ["" for x in range(2000)]
-    l =[]
+def local_search(search_keywords):
+    """
+    searches for a file by matching the file names in a directory tree while walking through the tree either top-down
+    :type search_keywords: basestring
+    :param search_keywords: text to search
+    :return: list of tuple containing name and path of file
+    """
+    search_result_paths = ["" for x in range(2000)]
+    search_result_names = ["" for x in range(2000)]
+    l = []
     i = 0
     for root, dirs, files in os.walk('../../../../'):
         for file in files:
             if search_keywords in file:
-                # print(file + ' and ')
                 # Getting full path of the file
-                # print(os.path.join(root, file))
-                filepath = os.path.join(root, file)
-                search_result_filenames[i] = file
-                tup = str(filepath),str(file)
+                path = os.path.join(root, file)
+                search_result_names[i] = file
+                tup = str(path), str(file)
                 l.append(tup)
-                print(search_result_filenames[i])
-                search_result_filepaths[i] = filepath
+                print(search_result_names[i])
+                search_result_paths[i] = path
                 i += 1
-    # return search_result_filepaths, search_result_filenames
     return l
 
 
-def open_file_in_default_application(file_path):
+def open_file(file_path):
+    """
+    opens file in default application
+    :param file_path: path of the file to open
+    :return:null
+    """
     subprocess.call(["xdg-open", file_path])
 
 
-def open_file_shown_in_search_result(button, filepathh):
-    print("Path is " + filepathh)
-    open_file_in_default_application(filepathh)
+def open_file_shown_in_search_result(button, file_path):
+    print("Path is " + file_path)
+    open_file(file_path)
 
 
 def google_search(text):
+    """
+    opens the URL and returns the JSON results from the google search api
+    :param text: text to search
+    :return: JSON data containing title, link, and snippet of 10 search results
+    """
     url = "https://www.googleapis.com/customsearch/v1?key=AIzaSyDKXPuaXh84T_tVVQcxQdbQS8TzNk2uuuU" \
           + "%20&cx=017576662512468239146:omuauf_lfve&q="
     words_to_search = text.split()
@@ -57,10 +68,16 @@ def google_search(text):
 
 
 def music(action):
+    """
+
+    :type action: basestring
+    :param action:
+    :return: NULL
+    """
     if action == 'play':
-        os.system('rhythmbox-client --play-pause')
+        os.system('rhythmbox-client --play')
     elif action == 'pause':
-        os.system('rhythmbox-client --play-pause')
+        os.system('rhythmbox-client --pause')
     elif action == 'next song':
         os.system('rhythmbox-client --next')
     elif action == 'previous song':

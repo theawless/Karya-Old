@@ -5,7 +5,7 @@ def music(action):
 		os.system('rhythmbox-client --play')
 	elif action == 'pause':
 		os.system('rhythmbox-client --pause')
-    elif action == 'quit':
+    elif action == 'pause':
 		os.system('rhythmbox-client --quit')
 	elif action == 'next song':
 		os.system('rhythmbox-client --next')

@@ -1,13 +1,20 @@
 import gi
-from .functions import localsearch, open_file_shown_in_search_result, google_search
+
 from .search import Search
 
 gi.require_version('Gtk', '3.0')
-from gi.repository import Gtk, WebKit, Pango
+from gi.repository import Gtk
 
 
 class HomepageHandler:
+    """
+    This is a signal handler class for homepage
+    """
     def __init__(self):
+        """
+        constructor of HomepageHandler
+        :return: NULL
+        """
         pass
 
     def on_btn_search_clicked(self, button):
@@ -35,27 +42,44 @@ class HomepageHandler:
 
 
 def on_search_btn_clicked(button, builder, search_entry):
-    print("LOL")
+    """
+    creates an object of class type Search and calls its member function to show output on homepage
+    :param button:
+    :param builder:  auxiliary object to access the widgets in the interface by the names assigned to them
+    :type search_entry: basestring
+    :param search_entry: input text
+    :return: NULL
+    """
     input_text = search_entry.get_text()
     output = Search(input_text)
     output.show(builder)
 
 
 class HomePage:
+    """
+    This class represent a class for Homepage of Sarcina
+    """
     def __init__(self):
+        """
+        Constructor of HomePage
+        :return: NULL
+        """
+        self.builder = Gtk.Builder()
         pass
 
     def get_homepage_box(self):
-        builder_homepage = Gtk.Builder()
+        """
+        creates view of homepage tab of notebook and connects its signals to implemented functions.
+        :return: Gtk box widget
+        """
+        self.builder.add_from_file("homepage/homepageui.glade")
+        self.builder.connect_signals(HomepageHandler())
 
-        builder_homepage.add_from_file("homepage/homepageui.glade")
-        builder_homepage.connect_signals(HomepageHandler())
+        home_page_full_box = self.builder.get_object("home_box")
+        search_btn = self.builder.get_object("btn_search")
+        search_entry = self.builder.get_object("search_entry")
 
-        home_page_full_box = builder_homepage.get_object("home_box")
-        search_btn = builder_homepage.get_object("btn_search")
-        search_entry = builder_homepage.get_object("search_entry")
-
-        search_btn.connect("clicked", on_search_btn_clicked, builder_homepage, search_entry)
+        search_btn.connect("clicked", on_search_btn_clicked, self.builder, search_entry)
 
         # view = WebKit.WebView()
         # webview.add(view)

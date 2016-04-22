@@ -1,20 +1,27 @@
 import gi
 from gi.repository import Gtk, Pango
 
-from homepage.functions import open_file_shown_in_search_result, localsearch, google_search
+from homepage.functions import open_file_shown_in_search_result, local_search, google_search
 
 gi.require_version('Gtk', '3.0')
 
 
 def show_local_search_result(builder, input_text):
+    """
+    shows search result in GUI after searching in local directories
+    :param builder: auxiliary object to access the widgets in the interface by the names assigned to them
+    :type input_text: basestring
+    :param input_text: text to search
+    :return: NULL
+    """
     search_res_listbox = builder.get_object("list_box")
-    tup_list = localsearch(input_text)
-    for (filepath, filename) in tup_list:
-        label = Gtk.Label(filename)
+    tup_list = local_search(input_text)
+    for (path, name) in tup_list:
+        label = Gtk.Label(name)
         label.set_single_line_mode(True)
         label.set_line_wrap_mode(Pango.WrapMode.CHAR)
         button = Gtk.Button.new_with_label("Open")
-        button.connect("clicked", open_file_shown_in_search_result, filepath)
+        button.connect("clicked", open_file_shown_in_search_result, path)
         row = Gtk.ListBoxRow()
         hbox = Gtk.HBox()
         hbox.set_homogeneous(True)
@@ -26,6 +33,13 @@ def show_local_search_result(builder, input_text):
 
 
 def show_google_results(builder, text):
+    """
+    takes google search result in JSON and displays in GUI
+    :param builder: auxiliary object to access the widgets in the interface by the names assigned to them
+    :type text: basestring
+    :param text: text to search
+    :return: NULL
+    """
     web_res = builder.get_object("web_res_listbox")
     data = google_search(text)
     for i in data['items']:
@@ -46,9 +60,22 @@ def show_google_results(builder, text):
 
 
 class Search:
+    """
+    This class represent a class for search query
+    """
     def __init__(self, text):
+        """
+        creates the variable associated with the class
+        :type text: basestring
+        :param text:  text to search
+        """
         self.text = text
 
     def show(self, builder):
+        """
+
+        :param builder:  auxiliary object to access the widgets in the interface by the names assigned to them
+        :return: NULL
+        """
         show_google_results(builder, self.text)
         show_local_search_result(builder, self.text)
