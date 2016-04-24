@@ -4,7 +4,7 @@ import re
 import subprocess
 from datetime import datetime
 
-sys.path.insert(0, '/home/harshit/Desktop/Sarcina/taskerpage/')
+sys.path.insert(0, '/home/harshit/Desktop/working/Sarcina/taskerpage/')
 from scriptWriter import Script
 
 
@@ -28,6 +28,7 @@ def textanalyser(text):
                          "run_application": "",
                          "search": "",
                          "play": "",
+                         "shutdown": "",
                          "click": {
                              "x": "",
                              "y": ""
@@ -51,6 +52,9 @@ def textanalyser(text):
     if "start dictation" in inputText or "dictate" in inputText:
         output["action"]["run_application"] = "gedit"
 
+    if "shutdown" in inputText:
+        output["action"]["shutdown"] = "On"
+
     if "run" in list_of_words:
         application_to_open = list_of_words[list_of_words.index("run") + 1]
         output["action"]["run_application"] = application_to_open
@@ -62,24 +66,24 @@ def textanalyser(text):
     if "play" in list_of_words:
         output["action"]["play"] = " ".join(inputText.split("play", 1)[1:])
 
-    if "calculate" in list_of_words:
-        op1 = list_of_words[list_of_words.index["calculate"] + 1]
-        op2 = list_of_words[list_of_words.index["calculate"] + 3]
-        operand = list_of_words[list_of_words.index["calculate"] + 2]
+    # if "calculate" in list_of_words:
+    #     op1 = list_of_words[list_of_words.index["calculate"] + 1]
+    #     op2 = list_of_words[list_of_words.index["calculate"] + 3]
+    #     operand = list_of_words[list_of_words.index["calculate"] + 2]
 
-        if tryInt(op1):
-            output["action"]["calculate"]["op1"] = int(op1)
-        if tryInt(op2):
-            output["action"]["calculate"]["op2"] = int(op2)
+    #     if tryInt(op1):
+    #         output["action"]["calculate"]["op1"] = int(op1)
+    #     if tryInt(op2):
+    #         output["action"]["calculate"]["op2"] = int(op2)
 
-        if operand == "+":
-            output["action"]["calculate"]["operand"] = "+"
-        elif operand == "-":
-            output["action"]["calculate"]["operand"] = "-"
-        elif operand == "*":
-            output["action"]["calculate"]["operand"] = "*"
-        elif operand == "/":
-            output["action"]["calculate"]["operand"] = "/"
+    #     if operand == "+":
+    #         output["action"]["calculate"]["operand"] = "+"
+    #     elif operand == "-":
+    #         output["action"]["calculate"]["operand"] = "-"
+    #     elif operand == "*":
+    #         output["action"]["calculate"]["operand"] = "*"
+    #     elif operand == "/":
+    #         output["action"]["calculate"]["operand"] = "/"
 
     if "click" in list_of_words:
         pos1 = list_of_words[list_of_words.index("click") + 1]
@@ -147,7 +151,7 @@ def textanalyser(text):
         script = Script()
         name_of_script = script.writeScript(output)
 
-    return {name_of_script, script}
+    return (name_of_script, script, output)
 
 # output = textanalyser("Repeat 3 times after 2 minute run firefox")
 # print(output)
