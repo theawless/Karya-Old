@@ -49,24 +49,24 @@ def show_google_results(builder, text):
     """
     web_res = builder.get_object("web_res_listbox")
     clean(web_res)
-    #try:
-    data = google_search(text)
-    for i in data['items']:
-        label_title = Gtk.Label()
-        label_snippet = Gtk.Label(i['snippet'])
-        markup = "<a href=\"" + str(i['link']) + "\"" + ">" + str(i['title']) + "</a>."
-        label_title.set_markup(markup)
-        row = Gtk.ListBoxRow()
-        vbox = Gtk.VBox()
-        vbox.pack_start(label_title, True, True, 0)
-        vbox.pack_start(label_snippet, True, True, 0)
-        row.add(vbox)
-        web_res.prepend(row)
-        print(i['title'])
-        print(i['link'])
-        print(i['snippet'])
-    #except urllib.error.URLError:
-    #    print("Check proxy!! urllib.error.URLError in google search :(  :( ")
+    try:
+        data = google_search(text)
+        for i in data['items']:
+            label_title = Gtk.Label()
+            label_snippet = Gtk.Label(i['snippet'])
+            markup = "<a href=\"" + str(i['link']) + "\"" + ">" + str(i['title']) + "</a>."
+            label_title.set_markup(markup)
+            row = Gtk.ListBoxRow()
+            vbox = Gtk.VBox()
+            vbox.pack_start(label_title, True, True, 0)
+            vbox.pack_start(label_snippet, True, True, 0)
+            row.add(vbox)
+            web_res.prepend(row)
+            print(i['title'])
+            print(i['link'])
+            print(i['snippet'])
+    except urllib.error.URLError:
+        print("Check proxy!! urllib.error.URLError in google search :(  :( ")
     web_res.show_all()
 
 

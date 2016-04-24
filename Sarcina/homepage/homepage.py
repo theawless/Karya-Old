@@ -59,7 +59,7 @@ class HomePage:
         self.home_page_full_box = self.builder.get_object("home_box")
         self.status_label = self.builder.get_object("status_label")
         self.recognised_text = ""
-        self.start_recog()
+        # self.start_recog()
 
     def start_recog(self):
         time.sleep(1)

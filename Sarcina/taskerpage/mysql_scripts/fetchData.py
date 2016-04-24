@@ -13,17 +13,15 @@ def fetchData():
 
     cursor = database.cursor()
 
-    sql = "SELECT * FROM Scripts"
+    sql = "SELECT * FROM tasks"
     try:
         cursor.execute(sql)
         results = cursor.fetchall()
         for row in results:
             tempObject = {}
-            tempObject["index"] = row[0]
+            tempObject["task_id"] = row[0]
             tempObject["name"] = row[1]
             tempObject["file_location"] = row[2]
-            tempObject["applications_involved"] = row[3]
-            tempObject["need_sudo_permission"] = row[4]
             output.append(tempObject)
 
     except MySQLdb.Error as e:

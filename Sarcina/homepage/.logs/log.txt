@@ -1,0 +1,46 @@
+MainThread - DEBUG - Setlog logger setup done
+MainThread - DEBUG - Constructed recogniser, Inside __init__ of homepage
+MainThread - DEBUG - Setlog logger setup done
+MainThread - DEBUG - Constructed recogniser, Inside __init__ of homepage
+MainThread - DEBUG - Setlog logger setup done
+MainThread - DEBUG - Constructed recogniser, Inside __init__ of homepage
+MainThread - DEBUG - Setlog logger setup done
+MainThread - DEBUG - Constructed recogniser, Inside __init__ of homepage
+MainThread - DEBUG - Setlog logger setup done
+MainThread - DEBUG - Constructed recogniser, Inside __init__ of homepage
+MainThread - DEBUG - Setlog logger setup done
+MainThread - DEBUG - Constructed recogniser, Inside __init__ of homepage
+MainThread - DEBUG - Setlog logger setup done
+MainThread - DEBUG - Constructed recogniser, Inside __init__ of homepage
+MainThread - DEBUG - Setlog logger setup done
+MainThread - DEBUG - Constructed recogniser, Inside __init__ of homepage
+MainThread - DEBUG - Setlog logger setup done
+MainThread - DEBUG - Constructed recogniser, Inside __init__ of homepage
+MainThread - DEBUG - Setlog logger setup done
+MainThread - DEBUG - Constructed recogniser, Inside __init__ of homepage
+MainThread - DEBUG - Setlog logger setup done
+MainThread - DEBUG - Constructed recogniser, Inside __init__ of homepage
+MainThread - DEBUG - Setlog logger setup done
+MainThread - DEBUG - Constructed recogniser, Inside __init__ of homepage
+MainThread - DEBUG - Setlog logger setup done
+MainThread - DEBUG - Setlog logger setup done
+MainThread - DEBUG - Setlog logger setup done
+MainThread - DEBUG - Constructed recogniser, Inside __init__ of homepage
+MainThread - DEBUG - Setlog logger setup done
+MainThread - DEBUG - Setlog logger setup done
+MainThread - DEBUG - Setlog logger setup done
+MainThread - DEBUG - Setlog logger setup done
+MainThread - DEBUG - Setlog logger setup done
+MainThread - DEBUG - Setlog logger setup done
+MainThread - DEBUG - Setlog logger setup done
+MainThread - DEBUG - Setlog logger setup done
+MainThread - DEBUG - Setlog logger setup done
+MainThread - DEBUG - Setlog logger setup done
+MainThread - DEBUG - Setlog logger setup done
+MainThread - DEBUG - Setlog logger setup done
+MainThread - DEBUG - Setlog logger setup done
+MainThread - DEBUG - Setlog logger setup done
+MainThread - DEBUG - Setlog logger setup done
+MainThread - DEBUG - Setlog logger setup done
+MainThread - DEBUG - Setlog logger setup done
+MainThread - DEBUG - Setlog logger setup done
