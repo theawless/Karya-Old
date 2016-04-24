@@ -1,5 +1,5 @@
 import os
-#create folder at location with name
+
 def music(action):
 	if action == 'play':
 		os.system('rhythmbox-client --play')

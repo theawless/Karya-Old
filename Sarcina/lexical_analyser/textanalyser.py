@@ -9,6 +9,11 @@ from scriptWriter import Script
 
 
 def tryInt(s):
+    """
+    Checks for Int
+    :param s:
+    :return: True if Int else False
+    """
     try:
         int(s)
         return True
@@ -17,6 +22,11 @@ def tryInt(s):
 
 
 def textanalyser(text):
+    """
+    Analyzes text and extracts useful components
+    :param text: Input text from entry box GUI
+    :return: Dictionary
+    """
     inputText = text.lower()
     output = {"repeat": "",
               "time_of_execution": {
@@ -37,7 +47,7 @@ def textanalyser(text):
                              "op2": "",
                              "operand": ""
                          }
-                         }
+                    }
               }
     state = 0
 

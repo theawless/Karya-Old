@@ -6,13 +6,27 @@ from threading import Timer
 
 
 class CodeBlock():
+    """
+    Class to generate script
+    """
     def __init__(self, head, block):
+        """
+        Initializing CodeBlock class
+        :param head: Head part for python code e.g if a > b for if condition, def helloWorld() for functions ..etc
+        :param block: Block part for python code e.g print("hello world") inside a loop
+        :return: null
+        """
         self.head = head
         self.block = block
         self.Input = {}
         self.name = ""
 
     def __str__(self, indent=""):
+        """
+        Converts CodeBlock code to string
+        :param indent:
+        :return: python code string
+        """
         result = indent + self.head + ":\n"
         indent += "    "
         for block in self.block:
@@ -24,11 +38,23 @@ class CodeBlock():
 
 
 class Script():
+    """
+    Script generating class
+    """
     def __init__(self):
+        """
+        Initializes variable
+        :return: null
+        """
         self.Input = {}
         self.name = ""
 
     def writeScript(self, Input):
+        """
+        Generates python code and write to a python file
+        :param Input: The dictionary passed by lexical analyser
+        :return: Name of the python file created
+        """
         self.Input = Input
         print("I am here")
         x = datetime.now()
@@ -60,6 +86,10 @@ class Script():
         return self.name
 
     def set_written_script(self):
+        """
+        Sets generated python script for execution at some time
+        :return: name of the python file set for execution
+        """
         m = __import__(self.name.split('.')[0])
         # from na
         # me.split('.')[0] import print_success

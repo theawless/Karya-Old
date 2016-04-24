@@ -8,6 +8,13 @@ import generatedScript
 
 
 def setTask(day, hour, minute):
+    """
+    Sets Task on a particular time
+    :param day:
+    :param hour:
+    :param minute:
+    :return: null
+    """
     x = datetime.today()
     y = x.replace(day=day, hour=hour, minute=minute, second=0, microsecond=0)
     delta_t = y - x

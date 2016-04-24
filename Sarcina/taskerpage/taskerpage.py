@@ -19,16 +19,37 @@ x = "test_script.py"
 
 
 class TaskerPage:
+    """
+    Class to preview and set tasks
+    """
     def __init__(self):
+        """
+        Initialize variables
+        :return: null
+        """
         self.name_of_curr_script = ""
         self.script_inst = None
 
     def on_set_btn_clicked(self, button, entry, entry_name):
+        """
+        Sets script for execution
+        :param button:
+        :param entry:
+        :param entry_name:
+        :return: null
+        """
         input_name = entry_name.get_text()
         self.script_inst.set_written_script()
         insert(input_name, self.name_of_curr_script)
 
     def on_preview_btn_clicked(self, button, entry, label_preview):
+        """
+        Shows preview of generated script by script writer
+        :param button:
+        :param entry:
+        :param label_preview:
+        :return: null
+        """
         input_text = entry.get_text()
         print("hello" + input_text)
         self.name_of_curr_script, script_inst = textanalyser.textanalyser(input_text)
@@ -37,9 +58,19 @@ class TaskerPage:
         label_preview.set_text(fp)
 
     def on_set_task_clicked(self, param1, param2):
+        """
+        Handler when existing task is clicked
+        :param param1:
+        :param param2:
+        :return:
+        """
         print("On set task clicked")
 
     def get_taskerpage_box(self):
+        """
+        Shows scripts to the page loaded from database
+        :return: null
+        """
         builder_homepage = Gtk.Builder()
 
         builder_homepage.add_from_file("taskerpage/taskerpageui.glade")

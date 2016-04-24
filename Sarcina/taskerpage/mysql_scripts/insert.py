@@ -6,6 +6,12 @@ import taskerpage.mysql_scripts.config as config
 
 
 def insert(name, address):
+    """
+    adds a task to tasks table
+    :param name:
+    :param address:
+    :return: True if successful else False
+    """
     database = MySQLdb.connect(config.settings['host'], config.settings['user'], \
                                config.settings['password'], config.settings['database_name'])
 
@@ -16,8 +22,13 @@ def insert(name, address):
     try:
         cursor.execute(sql, (name, address))
         database.commit()
+        database.close()
+        return True
+
     except MySQLdb.Error as e:
         database.rollback()
         print(e.args[1])
+        database.close()
+        return False
 
-    database.close()
+

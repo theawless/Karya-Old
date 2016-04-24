@@ -7,6 +7,10 @@ import taskerpage.mysql_scripts.config as config
 
 
 def fetchData():
+    """
+    Returns all tasks, previously set by user from tasks table
+    :return: task object array
+    """
     output = []
     database = MySQLdb.connect(config.settings['host'], config.settings['user'], \
                                config.settings['password'], config.settings['database_name'])
