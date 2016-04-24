@@ -74,6 +74,13 @@ class Script():
                     actions.append('functions.open_application("' + Input["action"]["run_application"] + '")')
                 elif action == "play":
                     actions.append('functions.music("' + Input["action"]["play"] + '")')
+                elif action == "click":
+                    actions.append('functions.click("' + str(Input["action"][("click")]) + '")')
+                elif action =="shutdown":
+                    actions.append('functions.shutdown("' + (Input["action"][("shutdown")]) + '")')
+
+
+
 
         actions.append('print("I am working")')
         print(actions)
