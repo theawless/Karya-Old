@@ -4,16 +4,11 @@ import re
 import subprocess
 from datetime import datetime
 
-sys.path.insert(0, '/home/abhinavp/Desktop/working_dir/Sarcina/taskerpage/')
+sys.path.insert(0, '/home/harshit/Desktop/Sarcina/taskerpage/')
 from scriptWriter import Script
 
 
 def tryInt(s):
-    """
-    Checks for Int
-    :param s:
-    :return: True if Int else False
-    """
     try:
         int(s)
         return True
@@ -22,11 +17,6 @@ def tryInt(s):
 
 
 def textanalyser(text):
-    """
-    Analyzes text and extracts useful components
-    :param text: Input text from entry box GUI
-    :return: Dictionary
-    """
     inputText = text.lower()
     output = {"repeat": "",
               "time_of_execution": {
@@ -47,7 +37,7 @@ def textanalyser(text):
                              "op2": "",
                              "operand": ""
                          }
-                    }
+                         }
               }
     state = 0
 
@@ -112,12 +102,17 @@ def textanalyser(text):
         amOrPm = list_of_words[list_of_words.index("at") + 2]
 
         if "pm" in amOrPm:
-            output["time_of_execution"]["day"] = datetime.now().day
-            if tryInt(time.split(":")[0]):
-                output["time_of_execution"]["hour"] = int(time.split(":")[0]) + 12
-
-            if tryInt(time.split(":")[1]):
+            if(int(time.split(":")[0]) == 12):
+                output["time_of_execution"]["day"] = datetime.now().day + 1
+                output["time_of_execution"]["hour"] = 0
                 output["time_of_execution"]["minute"] = int(time.split(":")[1])
+            else:
+                output["time_of_execution"]["day"] = datetime.now().day
+                if tryInt(time.split(":")[0]):
+                    output["time_of_execution"]["hour"] = int(time.split(":")[0]) + 12
+
+                if tryInt(time.split(":")[1]):
+                    output["time_of_execution"]["minute"] = int(time.split(":")[1])
 
         else:
             output["time_of_execution"]["day"] = datetime.now().day
