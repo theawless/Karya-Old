@@ -39,6 +39,12 @@ def open_file(file_path):
 
 
 def open_file_shown_in_search_result(button, file_path):
+    """
+    opens
+    :param button: instance of Gtk.Button
+    :param file_path: address of file
+    :return: None
+    """
     print("Path is " + file_path)
     open_file(file_path)
 

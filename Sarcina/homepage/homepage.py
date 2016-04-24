@@ -43,7 +43,7 @@ def on_search_btn_clicked(button, builder, search_entry):
 
 class HomePage:
     """
-    This class represent a class for Homepage of Sarcina
+    This class represent a singleton class for Homepage of Sarcina
     """
 
     def __init__(self):
@@ -59,10 +59,15 @@ class HomePage:
         self.home_page_full_box = self.builder.get_object("home_box")
         self.status_label = self.builder.get_object("status_label")
         self.recognised_text = ""
-        # self.start_recog()
+        self.start_recog()
 
     def start_recog(self):
+        """
+        creates an instance of Speech Recogniser ans start speech recognition in different thread
+        :return: None
+        """
         time.sleep(1)
+        print("ppp")
         recogniser = SpeechRecogniser(self.do_after_recog, self.status_text_set)
         logger.debug("Constructed recogniser, Inside __init__ of homepage")
         threader = threading.Thread(target=recogniser.start_recognising)
@@ -70,11 +75,22 @@ class HomePage:
         threader.start()
 
     def do_after_recog(self, text: str):
+        """
+        gets output of speech recognition i.e recognised text
+        and invokes function to change the text of search entry
+        :type text: basestring
+        :param text: recognised text
+        :return:None
+        """
         self.recognised_text = text
         self.analyse_text()
         self.search_entry_bar_text_changer(self.recognised_text)
 
     def analyse_text(self):
+        """
+        creates an instance of Search class and invokes its member function to show search results on homepage UI
+        :return:None
+        """
         self.status_text_set("Recognised text" + self.recognised_text)
         output = Search(self.recognised_text)
         output.show(self.builder)

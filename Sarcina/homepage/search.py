@@ -8,6 +8,11 @@ gi.require_version('Gtk', '3.0')
 
 
 def clean(widget_view):
+    """
+    destroy all widgets inside the view
+    :param widget_view: box containing widgets of gui
+    :return: None
+    """
     for widget in widget_view:
         widget.destroy()
 
@@ -85,7 +90,7 @@ class Search:
 
     def show(self, builder):
         """
-
+        asks google and locaL search engine to display results
         :param builder:  auxiliary object to access the widgets in the interface by the names assigned to them
         :return: NULL
         """
