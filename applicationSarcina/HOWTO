@@ -1,0 +1,17 @@
+Installation:
+    Install with script
+        Open terminal and execute 'sudo ./install.sh'
+
+    Manual Install
+        Copy sacrina.svg to path '/usr/share/icons/hicolor/scalable/apps/'
+        Install python3 and pip3 by 'sudo apt-get install python3-all-dev python3-pip'
+        Install portaudio and swig by 'sudo apt-get install swig portaudio19-dev'
+        Install SpeechRecognition and pocketsphinx by 'pip3 install SpeechRecognition pocketsphinx'
+        Install mysqlclient by 'sudo pip3 install mysqlclient'
+
+
+How to use more recognition services:
+    Open Sarcina, goto edit > preferences and tick whichever service you wan't and fill in the API key.
+    Save settings by clicking on "save button".    
+    Microsoft Bing, Wit.ai, Api.ai, provide free trials/services and you can get an api key from their respective sites.
+    
