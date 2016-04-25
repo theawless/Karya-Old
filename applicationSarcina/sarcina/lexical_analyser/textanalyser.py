@@ -25,7 +25,7 @@ import re
 import subprocess
 from datetime import datetime
 
-sys.path.insert(0, '/home/harshit/Desktop/working/Sarcina/taskerpage/')
+from sarcina.taskerpage.zeroStateTasker import zeroStateTasker
 from sarcina.taskerpage.scriptWriter import Script
 
 
@@ -48,12 +48,13 @@ def textanalyser(text):
               "action": {"start_dictation": "",
                          "run_application": "",
                          "search": "",
-                         "play": "",
+                         "music": "",
                          "shutdown": "",
                          "click": {
                              "x": "",
                              "y": ""
                          },
+                         "type" : "",
                          "calculate": {
                              "op1": "",
                              "op2": "",
@@ -84,27 +85,47 @@ def textanalyser(text):
         to_search = " ".join(inputText.split("search", 1)[1:])
         output["action"]["search"] = to_search
 
-    if "play" in list_of_words:
-        output["action"]["play"] = " ".join(inputText.split("play", 1)[1:])
+    if "music" in list_of_words:
+        output["action"]["music"] = list_of_words[list_of_words.index("music") - 1]
 
-    # if "calculate" in list_of_words:
-    #     op1 = list_of_words[list_of_words.index["calculate"] + 1]
-    #     op2 = list_of_words[list_of_words.index["calculate"] + 3]
-    #     operand = list_of_words[list_of_words.index["calculate"] + 2]
+    if "calculate" in list_of_words:
+        # op1 = list_of_words[list_of_words.index["calculate"] + 1]
+        # op2 = list_of_words[list_of_words.index["calculate"] + 3]
+        # operand = list_of_words[list_of_words.index["calculate"] + 2]
+        expression = inputText.split("calculate")[1]
+        if '+' in expression:
+            op1 = expression.split('+')[0]
+            op2 = expression.split('+')[1]
+            operand = '+' 
+        if '-' in expression:
+            op1 = expression.split('-')[0]
+            op2 = expression.split('-')[1]
+            operand = '-' 
+            
+        if '*' in expression:
+            op1 = expression.split('*')[0]
+            op2 = expression.split('*')[1]
+            operand = '*' 
+            
+        if '/' in expression:
+            op1 = expression.split('/')[0]
+            op2 = expression.split('/')[1]
+            operand = '/' 
 
-    #     if tryInt(op1):
-    #         output["action"]["calculate"]["op1"] = int(op1)
-    #     if tryInt(op2):
-    #         output["action"]["calculate"]["op2"] = int(op2)
 
-    #     if operand == "+":
-    #         output["action"]["calculate"]["operand"] = "+"
-    #     elif operand == "-":
-    #         output["action"]["calculate"]["operand"] = "-"
-    #     elif operand == "*":
-    #         output["action"]["calculate"]["operand"] = "*"
-    #     elif operand == "/":
-    #         output["action"]["calculate"]["operand"] = "/"
+        if tryInt(op1):
+            output["action"]["calculate"]["op1"] = int(op1)
+        if tryInt(op2):
+            output["action"]["calculate"]["op2"] = int(op2)
+
+        if operand == "+":
+            output["action"]["calculate"]["operand"] = "+"
+        elif operand == "-":
+            output["action"]["calculate"]["operand"] = "-"
+        elif operand == "*":
+            output["action"]["calculate"]["operand"] = "*"
+        elif operand == "/":
+            output["action"]["calculate"]["operand"] = "/"
 
     if "click" in list_of_words:
         pos1 = list_of_words[list_of_words.index("click") + 1]
@@ -121,13 +142,17 @@ def textanalyser(text):
         if pos2 == "bottom":
             output["action"]["click"]["x"] = 755
 
+    if "type" in list_of_words:
+        word = list_of_words[list_of_words.index("type")+1]
+        output["action"]["type"] = word
+
     if "at" in list_of_words:
         state = 1
         time = list_of_words[list_of_words.index("at") + 1]
         amOrPm = list_of_words[list_of_words.index("at") + 2]
 
         if "pm" in amOrPm:
-            if int(time.split(":")[0]) == 12:
+            if(int(time.split(":")[0]) == 12):
                 output["time_of_execution"]["day"] = datetime.now().day + 1
                 output["time_of_execution"]["hour"] = 0
                 output["time_of_execution"]["minute"] = int(time.split(":")[1])
@@ -165,14 +190,10 @@ def textanalyser(text):
                 output["time_of_execution"]["day"] = datetime.now().day + int(tempHour / 24)
 
     if state == 0:
-        pass
+        zeroStateTasker(output)
 
     if state == 1:
         # write script and sets task
         script = Script()
-        name_of_script = script.writeScript(output)
-
-    return name_of_script, script, output
-
-# output = textanalyser("Repeat 3 times after 2 minute run firefox")
-# print(output)
+        name_of_script  = script.writeScript(output)
+        return (name_of_script, script, output)

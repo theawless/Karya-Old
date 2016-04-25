@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=Sarcina
+Exec=sudo python3 __init__.py
+Comment=A voice based tasker/assistant for Ubuntu
+Icon=/usr/share/icons/hicolor/scalable/apps/sarcina.svg
+Terminal=false
+Type=Application
+Categories=Application

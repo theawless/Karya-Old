@@ -108,13 +108,30 @@ def music(action):
     elif action == 'decrease volume':
         os.system('rhythmbox-client --volume-down')
 
-def click(action):
-    x_pos = str(action['click']['x'])
-    y_pos = str(action['click']['y'])
+def click(x,y):
+    x_pos = str(x)
+    y_pos = str(y)
     command = 'xdotool mousemove ' + x_pos + ' ' + y_pos + ' click 1'
     os.system(command)
 
-def shutdown(action):
+def type(text):
+    command = 'xdotool click 1 && xdotool type "'+str(text)+'"'
+    os.system(command)
+
+def shutdown():
     os.system("shutdown 0")
+
+def calculate(op1,op2,operand):
+    op1 = int(op1)
+    op2 = int(op2)
+    if(operand=='+'):
+        res = op1+op2
+    if(operand=='-'):
+        res = op1-op2
+    if(operand=='*'):
+        res = op1*op2
+    if(operand=='/'):
+        res = op1/op2
+    return res
 
 

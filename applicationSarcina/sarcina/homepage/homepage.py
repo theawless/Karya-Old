@@ -27,10 +27,13 @@ from gi.repository import Gtk
 from sarcina.homepage.recogspeechbg import SpeechRecogniser
 from sarcina.setlog import logger
 from sarcina.homepage.search import Search
+from sarcina.lexical_analyser.textanalyser import textanalyser
 
 import os
+
 SARCINA_PATH = os.path.dirname(os.path.abspath(__file__))
 HOMEPAGE_UI_PATH = SARCINA_PATH + "/homepageui.glade"
+
 
 class HomepageHandler:
     """
@@ -80,6 +83,8 @@ class HomePage:
         self.search_btn = self.builder.get_object("btn_search")
         self.home_page_full_box = self.builder.get_object("home_box")
         self.status_label = self.builder.get_object("status_label")
+        self.btn_mode = self.builder.get_object("btn_mode")
+        self.tasker_mode = False
         self.recognised_text = ""
         self.start_recog()
 
@@ -114,8 +119,12 @@ class HomePage:
         :return:None
         """
         self.status_text_set("Recognised text" + self.recognised_text)
-        output = Search(self.recognised_text)
-        output.show(self.builder)
+        if self.tasker_mode:
+            print("Recognised text send to textanalyser "+self.recognised_text)
+            textanalyser(self.recognised_text)
+        #else:
+            output = Search(self.recognised_text)
+            output.show(self.builder)
 
     def search_entry_bar_text_changer(self, text: str):
         """
@@ -136,10 +145,19 @@ class HomePage:
         """
         self.status_label.set_text(text)
 
+    def on_change_mode_btn_clicked(self, button):
+        if not self.tasker_mode:
+            self.tasker_mode = True
+            self.btn_mode.set_label("Tasker Mode:On")
+        else:
+            self.tasker_mode = False
+            self.btn_mode.set_label("Tasker Mode:Off")
+
     def get_homepage_box(self):
         """
         creates view of homepage tab of notebook and connects its signals to implemented functions.
         :return: Gtk box widget
         """
+        self.btn_mode.connect("clicked", self.on_change_mode_btn_clicked)
         self.search_btn.connect("clicked", on_search_btn_clicked, self.builder, self.search_entry)
         return self.home_page_full_box

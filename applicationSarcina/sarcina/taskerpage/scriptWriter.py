@@ -19,8 +19,9 @@
 # You should have received a copy of the GNU General Public License
 # along with Sarcina.  If not, see <http://www.gnu.org/licenses/>.
 
-#!/usr/bin/python
+# !/usr/bin/python
 # import testData as Input
+
 import os
 from datetime import datetime
 from threading import Timer
@@ -30,6 +31,7 @@ class CodeBlock():
     """
     Class to generate script
     """
+
     def __init__(self, head, block):
         """
         Initializing CodeBlock class
@@ -62,6 +64,7 @@ class Script():
     """
     Script generating class
     """
+
     def __init__(self):
         """
         Initializes variable
@@ -86,22 +89,21 @@ class Script():
         self.name = str(x) + "generatedScript.py"
         targetScript = open(self.name, "w")
 
-        importBlock = 'import functions' + "\n"
+        importBlock = 'import sarcina.taskerpage.functions as functions' + "\n"
         repeat = 'for i in range(' + str(Input["repeat"]) + ')'
         actions = []
         for action, parameter in Input["action"].items():
             if (parameter):
                 if action == "run_application":
                     actions.append('functions.open_application("' + Input["action"]["run_application"] + '")')
-                elif action == "play":
-                    actions.append('functions.music("' + Input["action"]["play"] + '")')
+                elif action == "music":
+                    actions.append('functions.music("' + Input["action"]["music"] + '")')
                 elif action == "click":
-                    actions.append('functions.click("' + str(Input["action"][("click")]) + '")')
-                elif action =="shutdown":
-                    actions.append('functions.shutdown("' + (Input["action"][("shutdown")]) + '")')
-
-
-
+                    if Input["action"]["click"]["x"] and Input["action"]["click"]["y"]:
+                        actions.append('functions.click("' + str(Input["action"]["click"]["x"]) + ", " + str(
+                            Input["action"]["click"]["y"]) + '")')
+                elif action == "shutdown":
+                    actions.append('functions.shutdown("' + (Input["action"]["shutdown"]) + '")')
 
         actions.append('print("I am working")')
         print(actions)

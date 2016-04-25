@@ -76,7 +76,7 @@ class TaskerPage:
         """
         input_text = entry.get_text()
         print("hello" + input_text)
-        self.name_of_curr_script, script_inst = textanalyser.textanalyser(input_text)
+        self.name_of_curr_script, script_inst, dummy = textanalyser.textanalyser(input_text)
         fp = open(self.name_of_curr_script).read()
         self.script_inst = script_inst
         label_preview.set_text(fp)

@@ -1,7 +1,7 @@
 from gi.overrides import Gtk
 
-import functions
-from Sarcina.homepage.search import Search
+import sarcina.taskerpage.functions as functions
+from sarcina.homepage.search import Search
 
 def zeroStateTasker(Input):
     if Input["repeat"]:
