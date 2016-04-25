@@ -19,21 +19,31 @@
 # You should have received a copy of the GNU General Public License
 # along with Sarcina.  If not, see <http://www.gnu.org/licenses/>.
 
+from sarcina.unit_tests.test_google_search import TestGoogleSearch
+from sarcina.unit_tests.test_local_search import TestLocalSearch
 from sarcina.unit_tests.test_pluginSettings import TestPluginSettings
 from sarcina.unit_tests.test_speechRecogniser import TestSpeechRecogniser
 
 
 class AllTestSuite:
     def __init__(self):
-        self.test_settings = TestPluginSettings()
-        self.test_stt = TestSpeechRecogniser()
+        # self.test_settings = TestPluginSettings()
+        # self.test_stt = TestSpeechRecogniser()
+        self.test_ls = TestLocalSearch()
+        self.test_gs = TestGoogleSearch()
 
     def run_all_tests(self):
-        self.test_settings.setUp()
-        self.test_settings.run()
-        print("Settings test finished")
-        self.test_stt.setUp()
-        self.test_stt.run()
+        # self.test_settings.setUp()
+        # self.test_settings.run()
+        # print("Settings test finished")
+        # self.test_stt.setUp()
+        # self.test_stt.run()
+        self.test_ls.setUp()
+        self.test_ls.run()
+        print("Local search test finished")
+        self.test_gs.setUp()
+        self.test_gs.run()
+        print("Global search test finished")
         print("All tests finished")
 
 

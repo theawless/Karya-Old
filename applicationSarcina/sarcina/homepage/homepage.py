@@ -28,6 +28,9 @@ from sarcina.homepage.recogspeechbg import SpeechRecogniser
 from sarcina.setlog import logger
 from sarcina.homepage.search import Search
 
+import os
+SARCINA_PATH = os.path.dirname(os.path.abspath(__file__))
+HOMEPAGE_UI_PATH = SARCINA_PATH + "/homepageui.glade"
 
 class HomepageHandler:
     """
@@ -70,7 +73,8 @@ class HomePage:
         :return: NULL
         """
         self.builder = Gtk.Builder()
-        self.builder.add_from_file("homepage/homepageui.glade")
+        print(__file__)
+        self.builder.add_from_file(HOMEPAGE_UI_PATH)
         self.builder.connect_signals(HomepageHandler())
         self.search_entry = self.builder.get_object("search_entry")
         self.search_btn = self.builder.get_object("btn_search")

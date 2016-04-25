@@ -28,6 +28,10 @@ from sarcina.taskerpage.mysql_scripts.insert import insert
 
 from sarcina.lexical_analyser import textanalyser
 
+import os
+SARCINA_PATH = os.path.dirname(os.path.abspath(__file__))
+TASKERPAGE_UI_PATH = SARCINA_PATH + "/taskerpageui.glade"
+
 
 class TaskerHandler:
     def __init__(self):
@@ -93,7 +97,7 @@ class TaskerPage:
         """
         builder_homepage = Gtk.Builder()
 
-        builder_homepage.add_from_file("taskerpage/taskerpageui.glade")
+        builder_homepage.add_from_file(TASKERPAGE_UI_PATH)
         builder_homepage.connect_signals(TaskerHandler())
 
         home_page_full_box = builder_homepage.get_object("tasker_box")

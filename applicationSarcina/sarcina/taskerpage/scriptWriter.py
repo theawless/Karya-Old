@@ -21,7 +21,6 @@
 
 #!/usr/bin/python
 # import testData as Input
-
 import os
 from datetime import datetime
 from threading import Timer
