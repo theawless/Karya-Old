@@ -19,10 +19,10 @@
 # You should have received a copy of the GNU General Public License
 # along with Sarcina.  If not, see <http://www.gnu.org/licenses/>.
 
-from sarcina.unit_tests.test_google_search import TestGoogleSearch
-from sarcina.unit_tests.test_local_search import TestLocalSearch
-from sarcina.unit_tests.test_pluginSettings import TestPluginSettings
-from sarcina.unit_tests.test_speechRecogniser import TestSpeechRecogniser
+from test_google_search import TestGoogleSearch
+from test_local_search import TestLocalSearch
+#from unit_tests.test_pluginSettings import TestPluginSettings
+#from unit_tests.test_speechRecogniser import TestSpeechRecogniser
 
 
 class AllTestSuite:

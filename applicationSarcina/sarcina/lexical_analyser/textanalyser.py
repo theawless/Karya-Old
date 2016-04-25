@@ -54,7 +54,7 @@ def textanalyser(text):
                              "x": "",
                              "y": ""
                          },
-                         "type" : "",
+                         "type": "",
                          "calculate": {
                              "op1": "",
                              "op2": "",
@@ -96,22 +96,21 @@ def textanalyser(text):
         if '+' in expression:
             op1 = expression.split('+')[0]
             op2 = expression.split('+')[1]
-            operand = '+' 
+            operand = '+'
         if '-' in expression:
             op1 = expression.split('-')[0]
             op2 = expression.split('-')[1]
-            operand = '-' 
-            
+            operand = '-'
+
         if '*' in expression:
             op1 = expression.split('*')[0]
             op2 = expression.split('*')[1]
-            operand = '*' 
-            
+            operand = '*'
+
         if '/' in expression:
             op1 = expression.split('/')[0]
             op2 = expression.split('/')[1]
-            operand = '/' 
-
+            operand = '/'
 
         if tryInt(op1):
             output["action"]["calculate"]["op1"] = int(op1)
@@ -143,7 +142,7 @@ def textanalyser(text):
             output["action"]["click"]["x"] = 755
 
     if "type" in list_of_words:
-        word = list_of_words[list_of_words.index("type")+1]
+        word = inputText.split('type')[1]
         output["action"]["type"] = word
 
     if "at" in list_of_words:
@@ -152,7 +151,7 @@ def textanalyser(text):
         amOrPm = list_of_words[list_of_words.index("at") + 2]
 
         if "pm" in amOrPm:
-            if(int(time.split(":")[0]) == 12):
+            if (int(time.split(":")[0]) == 12):
                 output["time_of_execution"]["day"] = datetime.now().day + 1
                 output["time_of_execution"]["hour"] = 0
                 output["time_of_execution"]["minute"] = int(time.split(":")[1])
@@ -195,5 +194,5 @@ def textanalyser(text):
     if state == 1:
         # write script and sets task
         script = Script()
-        name_of_script  = script.writeScript(output)
+        name_of_script = script.writeScript(output)
         return (name_of_script, script, output)

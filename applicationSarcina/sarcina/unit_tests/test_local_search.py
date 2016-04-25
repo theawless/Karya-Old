@@ -1,5 +1,5 @@
 from unittest import TestCase
-from sarcina.homepage.functions import local_search
+from homepage.functions import local_search
 
 
 class TestLocalSearch(TestCase):
