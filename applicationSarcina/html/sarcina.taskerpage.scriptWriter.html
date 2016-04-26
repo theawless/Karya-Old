@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module sarcina.taskerpage.scriptWriter</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="sarcina.html"><font color="#ffffff">sarcina</font></a>.<a href="sarcina.taskerpage.html"><font color="#ffffff">taskerpage</font></a>.scriptWriter</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/abhinavp/Desktop/6/team4cs243/applicationSarcina/sarcina/taskerpage/scriptWriter.py">/home/abhinavp/Desktop/6/team4cs243/applicationSarcina/sarcina/taskerpage/scriptWriter.py</a></font></td></tr></table>
+    <p><tt>#&nbsp;Sarcina&nbsp;-&nbsp;A&nbsp;voice&nbsp;based&nbsp;tasker/assistant&nbsp;for&nbsp;Ubuntu.<br>
+#&nbsp;Copyright&nbsp;(C)&nbsp;&lt;2016&gt;&nbsp;&nbsp;&lt;Abhinav&nbsp;Singh&gt;<br>
+#&nbsp;Copyright&nbsp;(C)&nbsp;&lt;2016&gt;&nbsp;&nbsp;&lt;Abhinav&nbsp;Prince&gt;<br>
+#&nbsp;Copyright&nbsp;(C)&nbsp;&lt;2016&gt;&nbsp;&nbsp;&lt;Harshit&nbsp;Rai&gt;<br>
+#&nbsp;Copyright&nbsp;(C)&nbsp;&lt;2016&gt;&nbsp;&nbsp;&lt;Suraj&nbsp;Jha&gt;<br>
+#<br>
+#&nbsp;This&nbsp;file&nbsp;is&nbsp;part&nbsp;of&nbsp;Sarcina.<br>
+#<br>
+#&nbsp;Sarcina&nbsp;is&nbsp;free&nbsp;software:&nbsp;you&nbsp;can&nbsp;redistribute&nbsp;it&nbsp;and/or&nbsp;modify<br>
+#&nbsp;it&nbsp;under&nbsp;the&nbsp;terms&nbsp;of&nbsp;the&nbsp;GNU&nbsp;General&nbsp;Public&nbsp;License&nbsp;as&nbsp;published&nbsp;by<br>
+#&nbsp;the&nbsp;Free&nbsp;Software&nbsp;Foundation,&nbsp;either&nbsp;version&nbsp;3&nbsp;of&nbsp;the&nbsp;License,&nbsp;or<br>
+#&nbsp;(at&nbsp;your&nbsp;option)&nbsp;any&nbsp;later&nbsp;version.<br>
+#<br>
+#&nbsp;Sarcina&nbsp;is&nbsp;distributed&nbsp;in&nbsp;the&nbsp;hope&nbsp;that&nbsp;it&nbsp;will&nbsp;be&nbsp;useful,<br>
+#&nbsp;but&nbsp;WITHOUT&nbsp;ANY&nbsp;WARRANTY;&nbsp;without&nbsp;even&nbsp;the&nbsp;implied&nbsp;warranty&nbsp;of<br>
+#&nbsp;MERCHANTABILITY&nbsp;or&nbsp;FITNESS&nbsp;FOR&nbsp;A&nbsp;PARTICULAR&nbsp;PURPOSE.&nbsp;&nbsp;See&nbsp;the<br>
+#&nbsp;GNU&nbsp;General&nbsp;Public&nbsp;License&nbsp;for&nbsp;more&nbsp;details.<br>
+#<br>
+#&nbsp;You&nbsp;should&nbsp;have&nbsp;received&nbsp;a&nbsp;copy&nbsp;of&nbsp;the&nbsp;GNU&nbsp;General&nbsp;Public&nbsp;License<br>
+#&nbsp;along&nbsp;with&nbsp;Sarcina.&nbsp;&nbsp;If&nbsp;not,&nbsp;see&nbsp;&lt;<a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>&gt;.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="os.html">os</a><br>
+</td><td width="25%" valign=top></td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="builtins.html#object">builtins.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="sarcina.taskerpage.scriptWriter.html#CodeBlock">CodeBlock</a>
+</font></dt><dt><font face="helvetica, arial"><a href="sarcina.taskerpage.scriptWriter.html#Script">Script</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="CodeBlock">class <strong>CodeBlock</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Class&nbsp;to&nbsp;generate&nbsp;script<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="CodeBlock-__init__"><strong>__init__</strong></a>(self, head, block)</dt><dd><tt>Initializing&nbsp;<a href="#CodeBlock">CodeBlock</a>&nbsp;class<br>
+:param&nbsp;head:&nbsp;Head&nbsp;part&nbsp;for&nbsp;python&nbsp;code&nbsp;e.g&nbsp;if&nbsp;a&nbsp;&gt;&nbsp;b&nbsp;for&nbsp;if&nbsp;condition,&nbsp;def&nbsp;helloWorld()&nbsp;for&nbsp;functions&nbsp;..etc<br>
+:param&nbsp;block:&nbsp;Block&nbsp;part&nbsp;for&nbsp;python&nbsp;code&nbsp;e.g&nbsp;print("hello&nbsp;world")&nbsp;inside&nbsp;a&nbsp;loop<br>
+:return:&nbsp;null</tt></dd></dl>
+
+<dl><dt><a name="CodeBlock-__str__"><strong>__str__</strong></a>(self, indent='')</dt><dd><tt>Converts&nbsp;<a href="#CodeBlock">CodeBlock</a>&nbsp;code&nbsp;to&nbsp;string<br>
+:param&nbsp;indent:<br>
+:return:&nbsp;python&nbsp;code&nbsp;string</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Script">class <strong>Script</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#Script">Script</a>&nbsp;generating&nbsp;class<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Script-__init__"><strong>__init__</strong></a>(self)</dt><dd><tt>Initializes&nbsp;variable<br>
+:return:&nbsp;null</tt></dd></dl>
+
+<dl><dt><a name="Script-set_written_script"><strong>set_written_script</strong></a>(self)</dt><dd><tt>Sets&nbsp;generated&nbsp;python&nbsp;script&nbsp;for&nbsp;execution&nbsp;at&nbsp;some&nbsp;time<br>
+:return:&nbsp;name&nbsp;of&nbsp;the&nbsp;python&nbsp;file&nbsp;set&nbsp;for&nbsp;execution</tt></dd></dl>
+
+<dl><dt><a name="Script-writeScript"><strong>writeScript</strong></a>(self, Input)</dt><dd><tt>Generates&nbsp;python&nbsp;code&nbsp;and&nbsp;write&nbsp;to&nbsp;a&nbsp;python&nbsp;file<br>
+:param&nbsp;Input:&nbsp;The&nbsp;dictionary&nbsp;passed&nbsp;by&nbsp;lexical&nbsp;analyser<br>
+:return:&nbsp;Name&nbsp;of&nbsp;the&nbsp;python&nbsp;file&nbsp;created</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table></td></tr></table>
+</body></html>

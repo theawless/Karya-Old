@@ -76,7 +76,10 @@ class Sarcina(Gtk.Application):
     def on_quit_activate(self, menu_item):
         sys.exit()
 
+if __name__=="__main__":
+    app = Sarcina()
+    exit_status = app.run(sys.argv)
+    sys.exit(exit_status)
 
-app = Sarcina()
-exit_status = app.run(sys.argv)
-sys.exit(exit_status)
+
+

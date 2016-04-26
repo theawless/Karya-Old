@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module sarcina.homepage.homepage</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="sarcina.html"><font color="#ffffff">sarcina</font></a>.<a href="sarcina.homepage.html"><font color="#ffffff">homepage</font></a>.homepage</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/abhinavp/Desktop/6/team4cs243/applicationSarcina/sarcina/homepage/homepage.py">/home/abhinavp/Desktop/6/team4cs243/applicationSarcina/sarcina/homepage/homepage.py</a></font></td></tr></table>
+    <p><tt>#&nbsp;Sarcina&nbsp;-&nbsp;A&nbsp;voice&nbsp;based&nbsp;tasker/assistant&nbsp;for&nbsp;Ubuntu.<br>
+#&nbsp;Copyright&nbsp;(C)&nbsp;&lt;2016&gt;&nbsp;&nbsp;&lt;Abhinav&nbsp;Singh&gt;<br>
+#&nbsp;Copyright&nbsp;(C)&nbsp;&lt;2016&gt;&nbsp;&nbsp;&lt;Abhinav&nbsp;Prince&gt;<br>
+#&nbsp;Copyright&nbsp;(C)&nbsp;&lt;2016&gt;&nbsp;&nbsp;&lt;Harshit&nbsp;Rai&gt;<br>
+#&nbsp;Copyright&nbsp;(C)&nbsp;&lt;2016&gt;&nbsp;&nbsp;&lt;Suraj&nbsp;Jha&gt;<br>
+#<br>
+#&nbsp;This&nbsp;file&nbsp;is&nbsp;part&nbsp;of&nbsp;Sarcina.<br>
+#<br>
+#&nbsp;Sarcina&nbsp;is&nbsp;free&nbsp;software:&nbsp;you&nbsp;can&nbsp;redistribute&nbsp;it&nbsp;and/or&nbsp;modify<br>
+#&nbsp;it&nbsp;under&nbsp;the&nbsp;terms&nbsp;of&nbsp;the&nbsp;GNU&nbsp;General&nbsp;Public&nbsp;License&nbsp;as&nbsp;published&nbsp;by<br>
+#&nbsp;the&nbsp;Free&nbsp;Software&nbsp;Foundation,&nbsp;either&nbsp;version&nbsp;3&nbsp;of&nbsp;the&nbsp;License,&nbsp;or<br>
+#&nbsp;(at&nbsp;your&nbsp;option)&nbsp;any&nbsp;later&nbsp;version.<br>
+#<br>
+#&nbsp;Sarcina&nbsp;is&nbsp;distributed&nbsp;in&nbsp;the&nbsp;hope&nbsp;that&nbsp;it&nbsp;will&nbsp;be&nbsp;useful,<br>
+#&nbsp;but&nbsp;WITHOUT&nbsp;ANY&nbsp;WARRANTY;&nbsp;without&nbsp;even&nbsp;the&nbsp;implied&nbsp;warranty&nbsp;of<br>
+#&nbsp;MERCHANTABILITY&nbsp;or&nbsp;FITNESS&nbsp;FOR&nbsp;A&nbsp;PARTICULAR&nbsp;PURPOSE.&nbsp;&nbsp;See&nbsp;the<br>
+#&nbsp;GNU&nbsp;General&nbsp;Public&nbsp;License&nbsp;for&nbsp;more&nbsp;details.<br>
+#<br>
+#&nbsp;You&nbsp;should&nbsp;have&nbsp;received&nbsp;a&nbsp;copy&nbsp;of&nbsp;the&nbsp;GNU&nbsp;General&nbsp;Public&nbsp;License<br>
+#&nbsp;along&nbsp;with&nbsp;Sarcina.&nbsp;&nbsp;If&nbsp;not,&nbsp;see&nbsp;&lt;<a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>&gt;.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="gi.repository.Gtk.html">gi.repository.Gtk</a><br>
+</td><td width="25%" valign=top><a href="os.html">os</a><br>
+</td><td width="25%" valign=top><a href="threading.html">threading</a><br>
+</td><td width="25%" valign=top><a href="time.html">time</a><br>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="builtins.html#object">builtins.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="sarcina.homepage.homepage.html#HomePage">HomePage</a>
+</font></dt><dt><font face="helvetica, arial"><a href="sarcina.homepage.homepage.html#HomepageHandler">HomepageHandler</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="HomePage">class <strong>HomePage</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>This&nbsp;class&nbsp;represent&nbsp;a&nbsp;singleton&nbsp;class&nbsp;for&nbsp;Homepage&nbsp;of&nbsp;Sarcina<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="HomePage-__init__"><strong>__init__</strong></a>(self)</dt><dd><tt>Constructor&nbsp;of&nbsp;<a href="#HomePage">HomePage</a><br>
+:return:&nbsp;NULL</tt></dd></dl>
+
+<dl><dt><a name="HomePage-analyse_text"><strong>analyse_text</strong></a>(self)</dt><dd><tt>creates&nbsp;an&nbsp;instance&nbsp;of&nbsp;Search&nbsp;class&nbsp;and&nbsp;invokes&nbsp;its&nbsp;member&nbsp;function&nbsp;to&nbsp;show&nbsp;search&nbsp;results&nbsp;on&nbsp;homepage&nbsp;UI<br>
+:return:None</tt></dd></dl>
+
+<dl><dt><a name="HomePage-do_after_recog"><strong>do_after_recog</strong></a>(self, text:str)</dt><dd><tt>gets&nbsp;output&nbsp;of&nbsp;speech&nbsp;recognition&nbsp;i.e&nbsp;recognised&nbsp;text<br>
+and&nbsp;invokes&nbsp;function&nbsp;to&nbsp;change&nbsp;the&nbsp;text&nbsp;of&nbsp;search&nbsp;entry<br>
+:type&nbsp;text:&nbsp;basestring<br>
+:param&nbsp;text:&nbsp;recognised&nbsp;text<br>
+:return:None</tt></dd></dl>
+
+<dl><dt><a name="HomePage-get_homepage_box"><strong>get_homepage_box</strong></a>(self)</dt><dd><tt>creates&nbsp;view&nbsp;of&nbsp;homepage&nbsp;tab&nbsp;of&nbsp;notebook&nbsp;and&nbsp;connects&nbsp;its&nbsp;signals&nbsp;to&nbsp;implemented&nbsp;functions.<br>
+:return:&nbsp;Gtk&nbsp;box&nbsp;widget</tt></dd></dl>
+
+<dl><dt><a name="HomePage-on_change_mode_btn_clicked"><strong>on_change_mode_btn_clicked</strong></a>(self, button)</dt></dl>
+
+<dl><dt><a name="HomePage-search_entry_bar_text_changer"><strong>search_entry_bar_text_changer</strong></a>(self, text:str)</dt><dd><tt>displays&nbsp;the&nbsp;recognized&nbsp;text&nbsp;in&nbsp;search&nbsp;entry<br>
+:type&nbsp;text:&nbsp;basestring<br>
+:param&nbsp;text:&nbsp;recognized&nbsp;text<br>
+:return:&nbsp;Null</tt></dd></dl>
+
+<dl><dt><a name="HomePage-start_recog"><strong>start_recog</strong></a>(self)</dt><dd><tt>creates&nbsp;an&nbsp;instance&nbsp;of&nbsp;Speech&nbsp;Recogniser&nbsp;ans&nbsp;start&nbsp;speech&nbsp;recognition&nbsp;in&nbsp;different&nbsp;thread<br>
+:return:&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="HomePage-status_text_set"><strong>status_text_set</strong></a>(self, text:str)</dt><dd><tt>displays&nbsp;the&nbsp;recognized&nbsp;text&nbsp;in&nbsp;search&nbsp;entry<br>
+:type&nbsp;text:&nbsp;basestring<br>
+:param&nbsp;text:&nbsp;recognized&nbsp;text<br>
+:return:&nbsp;Null</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="HomepageHandler">class <strong>HomepageHandler</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>This&nbsp;is&nbsp;a&nbsp;signal&nbsp;handler&nbsp;class&nbsp;for&nbsp;homepage<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="HomepageHandler-__init__"><strong>__init__</strong></a>(self)</dt><dd><tt>constructor&nbsp;of&nbsp;<a href="#HomepageHandler">HomepageHandler</a><br>
+:return:&nbsp;NULL</tt></dd></dl>
+
+<dl><dt><a name="HomepageHandler-on_btn_search_clicked"><strong>on_btn_search_clicked</strong></a>(self, button)</dt></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-on_search_btn_clicked"><strong>on_search_btn_clicked</strong></a>(button, builder, search_entry)</dt><dd><tt>creates&nbsp;an&nbsp;<a href="builtins.html#object">object</a>&nbsp;of&nbsp;class&nbsp;type&nbsp;Search&nbsp;and&nbsp;calls&nbsp;its&nbsp;member&nbsp;function&nbsp;to&nbsp;show&nbsp;output&nbsp;on&nbsp;homepage<br>
+:param&nbsp;button:<br>
+:param&nbsp;builder:&nbsp;&nbsp;auxiliary&nbsp;<a href="builtins.html#object">object</a>&nbsp;to&nbsp;access&nbsp;the&nbsp;widgets&nbsp;in&nbsp;the&nbsp;interface&nbsp;by&nbsp;the&nbsp;names&nbsp;assigned&nbsp;to&nbsp;them<br>
+:type&nbsp;search_entry:&nbsp;basestring<br>
+:param&nbsp;search_entry:&nbsp;input&nbsp;text<br>
+:return:&nbsp;NULL</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>HOMEPAGE_UI_PATH</strong> = '/home/abhinavp/Desktop/6/team4cs243/applicationSarcina/sarcina/homepage/homepageui.glade'<br>
+<strong>SARCINA_PATH</strong> = '/home/abhinavp/Desktop/6/team4cs243/applicationSarcina/sarcina/homepage'<br>
+<strong>logger</strong> = &lt;logging.Logger object&gt;</td></tr></table>
+</body></html>

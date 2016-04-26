@@ -1,0 +1,490 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: package sarcina</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>sarcina</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/abhinavp/Desktop/6/team4cs243/applicationSarcina/sarcina/__init__.py">/home/abhinavp/Desktop/6/team4cs243/applicationSarcina/sarcina/__init__.py</a></font></td></tr></table>
+    <p><tt>#&nbsp;<a href="#Sarcina">Sarcina</a>&nbsp;-&nbsp;A&nbsp;voice&nbsp;based&nbsp;tasker/assistant&nbsp;for&nbsp;Ubuntu.<br>
+#&nbsp;Copyright&nbsp;(C)&nbsp;&lt;2016&gt;&nbsp;&nbsp;&lt;Abhinav&nbsp;Singh&gt;<br>
+#&nbsp;Copyright&nbsp;(C)&nbsp;&lt;2016&gt;&nbsp;&nbsp;&lt;Abhinav&nbsp;Prince&gt;<br>
+#&nbsp;Copyright&nbsp;(C)&nbsp;&lt;2016&gt;&nbsp;&nbsp;&lt;Harshit&nbsp;Rai&gt;<br>
+#&nbsp;Copyright&nbsp;(C)&nbsp;&lt;2016&gt;&nbsp;&nbsp;&lt;Suraj&nbsp;Jha&gt;<br>
+#<br>
+#&nbsp;This&nbsp;file&nbsp;is&nbsp;part&nbsp;of&nbsp;<a href="#Sarcina">Sarcina</a>.<br>
+#<br>
+#&nbsp;<a href="#Sarcina">Sarcina</a>&nbsp;is&nbsp;free&nbsp;software:&nbsp;you&nbsp;can&nbsp;redistribute&nbsp;it&nbsp;and/or&nbsp;modify<br>
+#&nbsp;it&nbsp;under&nbsp;the&nbsp;terms&nbsp;of&nbsp;the&nbsp;GNU&nbsp;General&nbsp;Public&nbsp;License&nbsp;as&nbsp;published&nbsp;by<br>
+#&nbsp;the&nbsp;Free&nbsp;Software&nbsp;Foundation,&nbsp;either&nbsp;version&nbsp;3&nbsp;of&nbsp;the&nbsp;License,&nbsp;or<br>
+#&nbsp;(at&nbsp;your&nbsp;option)&nbsp;any&nbsp;later&nbsp;version.<br>
+#<br>
+#&nbsp;<a href="#Sarcina">Sarcina</a>&nbsp;is&nbsp;distributed&nbsp;in&nbsp;the&nbsp;hope&nbsp;that&nbsp;it&nbsp;will&nbsp;be&nbsp;useful,<br>
+#&nbsp;but&nbsp;WITHOUT&nbsp;ANY&nbsp;WARRANTY;&nbsp;without&nbsp;even&nbsp;the&nbsp;implied&nbsp;warranty&nbsp;of<br>
+#&nbsp;MERCHANTABILITY&nbsp;or&nbsp;FITNESS&nbsp;FOR&nbsp;A&nbsp;PARTICULAR&nbsp;PURPOSE.&nbsp;&nbsp;See&nbsp;the<br>
+#&nbsp;GNU&nbsp;General&nbsp;Public&nbsp;License&nbsp;for&nbsp;more&nbsp;details.<br>
+#<br>
+#&nbsp;You&nbsp;should&nbsp;have&nbsp;received&nbsp;a&nbsp;copy&nbsp;of&nbsp;the&nbsp;GNU&nbsp;General&nbsp;Public&nbsp;License<br>
+#&nbsp;along&nbsp;with&nbsp;<a href="#Sarcina">Sarcina</a>.&nbsp;&nbsp;If&nbsp;not,&nbsp;see&nbsp;&lt;<a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>&gt;.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Package Contents</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="sarcina.homepage.html"><strong>homepage</strong>&nbsp;(package)</a><br>
+<a href="sarcina.lexical_analyser.html"><strong>lexical_analyser</strong>&nbsp;(package)</a><br>
+</td><td width="25%" valign=top><a href="sarcina.main.html">main</a><br>
+<a href="sarcina.setlog.html">setlog</a><br>
+</td><td width="25%" valign=top><a href="sarcina.shell.html"><strong>shell</strong>&nbsp;(package)</a><br>
+<a href="sarcina.taskerpage.html"><strong>taskerpage</strong>&nbsp;(package)</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="builtins.html#object">builtins.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="sarcina.html#SarcinaHandler">SarcinaHandler</a>
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="gi.repository.Gtk.html#Application">gi.repository.Gtk.Application</a>(<a href="gi.repository.Gio.html#Application">gi.repository.Gio.Application</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="sarcina.html#Sarcina">Sarcina</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Sarcina">class <strong>Sarcina</strong></a>(<a href="gi.repository.Gtk.html#Application">gi.repository.Gtk.Application</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>:Constructors:<br>
+&nbsp;<br>
+::<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="gi.repository.Gtk.html#Application">Application</a>(**properties)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Sarcina-new">new</a>(application_id:str=None,&nbsp;flags:Gio.ApplicationFlags)<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="sarcina.html#Sarcina">Sarcina</a></dd>
+<dd><a href="gi.repository.Gtk.html#Application">gi.repository.Gtk.Application</a></dd>
+<dd><a href="gi.repository.Gio.html#Application">gi.repository.Gio.Application</a></dd>
+<dd><a href="gi.overrides.GObject.html#Object">gi.overrides.GObject.Object</a></dd>
+<dd>gi.repository.GObject.Object</dd>
+<dd>gi._gobject._gobject.GObject</dd>
+<dd><a href="gi.repository.Gio.html#ActionGroup">gi.repository.Gio.ActionGroup</a></dd>
+<dd><a href="gi.repository.Gio.html#ActionMap">gi.repository.Gio.ActionMap</a></dd>
+<dd>gobject.GInterface</dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="Sarcina-__init__"><strong>__init__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Sarcina-do_activate"><strong>do_activate</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Sarcina-do_startup"><strong>do_startup</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Sarcina-on_about_activate"><strong>on_about_activate</strong></a>(self, menu_item)</dt></dl>
+
+<dl><dt><a name="Sarcina-on_pref_activate"><strong>on_pref_activate</strong></a>(self, menu_item)</dt></dl>
+
+<dl><dt><a name="Sarcina-on_quit_activate"><strong>on_quit_activate</strong></a>(self, menu_item)</dt></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__gtype__</strong> = &lt;GType sarcina+Sarcina (17248176)&gt;</dl>
+
+<hr>
+Data descriptors inherited from <a href="gi.repository.Gtk.html#Application">gi.repository.Gtk.Application</a>:<br>
+<dl><dt><strong>parent</strong></dt>
+</dl>
+<dl><dt><strong>priv</strong></dt>
+</dl>
+<hr>
+Data and other attributes inherited from <a href="gi.repository.Gtk.html#Application">gi.repository.Gtk.Application</a>:<br>
+<dl><dt><strong>__gsignals__</strong> = {}</dl>
+
+<dl><dt><strong>__info__</strong> = ObjectInfo(Application)</dl>
+
+<dl><dt><strong>add_accelerator</strong> = gi.FunctionInfo(add_accelerator)<dd><tt><a href="#Sarcina-add_accelerator">add_accelerator</a>(self,&nbsp;accelerator:str,&nbsp;action_name:str,&nbsp;parameter:GLib.Variant=None)</tt></dl>
+
+<dl><dt><strong>add_window</strong> = gi.FunctionInfo(add_window)<dd><tt><a href="#Sarcina-add_window">add_window</a>(self,&nbsp;window:Gtk.Window)</tt></dl>
+
+<dl><dt><strong>do_window_added</strong> = gi.VFuncInfo(window_added)<dd><tt>window_added(self,&nbsp;window:Gtk.Window)</tt></dl>
+
+<dl><dt><strong>do_window_removed</strong> = gi.VFuncInfo(window_removed)<dd><tt>window_removed(self,&nbsp;window:Gtk.Window)</tt></dl>
+
+<dl><dt><strong>get_active_window</strong> = gi.FunctionInfo(get_active_window)<dd><tt><a href="#Sarcina-get_active_window">get_active_window</a>(self)</tt></dl>
+
+<dl><dt><strong>get_app_menu</strong> = gi.FunctionInfo(get_app_menu)<dd><tt><a href="#Sarcina-get_app_menu">get_app_menu</a>(self)</tt></dl>
+
+<dl><dt><strong>get_menubar</strong> = gi.FunctionInfo(get_menubar)<dd><tt><a href="#Sarcina-get_menubar">get_menubar</a>(self)</tt></dl>
+
+<dl><dt><strong>get_window_by_id</strong> = gi.FunctionInfo(get_window_by_id)<dd><tt><a href="#Sarcina-get_window_by_id">get_window_by_id</a>(self,&nbsp;id:int)</tt></dl>
+
+<dl><dt><strong>get_windows</strong> = gi.FunctionInfo(get_windows)<dd><tt><a href="#Sarcina-get_windows">get_windows</a>(self)</tt></dl>
+
+<dl><dt><strong>inhibit</strong> = gi.FunctionInfo(inhibit)<dd><tt><a href="#Sarcina-inhibit">inhibit</a>(self,&nbsp;window:Gtk.Window=None,&nbsp;flags:Gtk.ApplicationInhibitFlags,&nbsp;reason:str=None)</tt></dl>
+
+<dl><dt><strong>is_inhibited</strong> = gi.FunctionInfo(is_inhibited)<dd><tt><a href="#Sarcina-is_inhibited">is_inhibited</a>(self,&nbsp;flags:Gtk.ApplicationInhibitFlags)</tt></dl>
+
+<dl><dt><strong>new</strong> = gi.FunctionInfo(new)<dd><tt><a href="#Sarcina-new">new</a>(application_id:str=None,&nbsp;flags:Gio.ApplicationFlags)</tt></dl>
+
+<dl><dt><strong>remove_accelerator</strong> = gi.FunctionInfo(remove_accelerator)<dd><tt><a href="#Sarcina-remove_accelerator">remove_accelerator</a>(self,&nbsp;action_name:str,&nbsp;parameter:GLib.Variant=None)</tt></dl>
+
+<dl><dt><strong>remove_window</strong> = gi.FunctionInfo(remove_window)<dd><tt><a href="#Sarcina-remove_window">remove_window</a>(self,&nbsp;window:Gtk.Window)</tt></dl>
+
+<dl><dt><strong>set_app_menu</strong> = gi.FunctionInfo(set_app_menu)<dd><tt><a href="#Sarcina-set_app_menu">set_app_menu</a>(self,&nbsp;app_menu:Gio.MenuModel=None)</tt></dl>
+
+<dl><dt><strong>set_menubar</strong> = gi.FunctionInfo(set_menubar)<dd><tt><a href="#Sarcina-set_menubar">set_menubar</a>(self,&nbsp;menubar:Gio.MenuModel=None)</tt></dl>
+
+<dl><dt><strong>uninhibit</strong> = gi.FunctionInfo(uninhibit)<dd><tt><a href="#Sarcina-uninhibit">uninhibit</a>(self,&nbsp;cookie:int)</tt></dl>
+
+<hr>
+Data descriptors inherited from <a href="gi.repository.Gio.html#Application">gi.repository.Gio.Application</a>:<br>
+<dl><dt><strong>parent_instance</strong></dt>
+</dl>
+<hr>
+Data and other attributes inherited from <a href="gi.repository.Gio.html#Application">gi.repository.Gio.Application</a>:<br>
+<dl><dt><strong>activate</strong> = gi.FunctionInfo(activate)<dd><tt><a href="#Sarcina-activate">activate</a>(self)</tt></dl>
+
+<dl><dt><strong>add_main_option_entries</strong> = gi.FunctionInfo(add_main_option_entries)<dd><tt><a href="#Sarcina-add_main_option_entries">add_main_option_entries</a>(self,&nbsp;entries:list)</tt></dl>
+
+<dl><dt><strong>add_option_group</strong> = gi.FunctionInfo(add_option_group)<dd><tt><a href="#Sarcina-add_option_group">add_option_group</a>(self,&nbsp;group:GLib.OptionGroup)</tt></dl>
+
+<dl><dt><strong>do_add_platform_data</strong> = gi.VFuncInfo(add_platform_data)<dd><tt>add_platform_data(self,&nbsp;builder:GLib.VariantBuilder)</tt></dl>
+
+<dl><dt><strong>do_after_emit</strong> = gi.VFuncInfo(after_emit)<dd><tt>after_emit(self,&nbsp;platform_data:GLib.Variant)</tt></dl>
+
+<dl><dt><strong>do_before_emit</strong> = gi.VFuncInfo(before_emit)<dd><tt>before_emit(self,&nbsp;platform_data:GLib.Variant)</tt></dl>
+
+<dl><dt><strong>do_command_line</strong> = gi.VFuncInfo(command_line)<dd><tt>command_line(self,&nbsp;command_line:Gio.ApplicationCommandLine)</tt></dl>
+
+<dl><dt><strong>do_dbus_register</strong> = gi.VFuncInfo(dbus_register)<dd><tt>dbus_register(self,&nbsp;connection:Gio.DBusConnection,&nbsp;object_path:str)</tt></dl>
+
+<dl><dt><strong>do_dbus_unregister</strong> = gi.VFuncInfo(dbus_unregister)<dd><tt>dbus_unregister(self,&nbsp;connection:Gio.DBusConnection,&nbsp;object_path:str)</tt></dl>
+
+<dl><dt><strong>do_handle_local_options</strong> = gi.VFuncInfo(handle_local_options)<dd><tt>handle_local_options(self,&nbsp;options:GLib.VariantDict)</tt></dl>
+
+<dl><dt><strong>do_local_command_line</strong> = gi.VFuncInfo(local_command_line)<dd><tt>local_command_line(self,&nbsp;arguments:list)&nbsp;-&gt;&nbsp;arguments:list,&nbsp;exit_status:int</tt></dl>
+
+<dl><dt><strong>do_open</strong> = gi.VFuncInfo(open)<dd><tt><a href="#Sarcina-open">open</a>(self,&nbsp;files:list,&nbsp;hint:str)</tt></dl>
+
+<dl><dt><strong>do_quit_mainloop</strong> = gi.VFuncInfo(quit_mainloop)<dd><tt>quit_mainloop(self)</tt></dl>
+
+<dl><dt><strong>do_run_mainloop</strong> = gi.VFuncInfo(run_mainloop)<dd><tt>run_mainloop(self)</tt></dl>
+
+<dl><dt><strong>do_shutdown</strong> = gi.VFuncInfo(shutdown)<dd><tt>shutdown(self)</tt></dl>
+
+<dl><dt><strong>get_application_id</strong> = gi.FunctionInfo(get_application_id)<dd><tt><a href="#Sarcina-get_application_id">get_application_id</a>(self)</tt></dl>
+
+<dl><dt><strong>get_dbus_connection</strong> = gi.FunctionInfo(get_dbus_connection)<dd><tt><a href="#Sarcina-get_dbus_connection">get_dbus_connection</a>(self)</tt></dl>
+
+<dl><dt><strong>get_dbus_object_path</strong> = gi.FunctionInfo(get_dbus_object_path)<dd><tt><a href="#Sarcina-get_dbus_object_path">get_dbus_object_path</a>(self)</tt></dl>
+
+<dl><dt><strong>get_default</strong> = gi.FunctionInfo(get_default)<dd><tt><a href="#Sarcina-get_default">get_default</a>()</tt></dl>
+
+<dl><dt><strong>get_flags</strong> = gi.FunctionInfo(get_flags)<dd><tt><a href="#Sarcina-get_flags">get_flags</a>(self)</tt></dl>
+
+<dl><dt><strong>get_inactivity_timeout</strong> = gi.FunctionInfo(get_inactivity_timeout)<dd><tt><a href="#Sarcina-get_inactivity_timeout">get_inactivity_timeout</a>(self)</tt></dl>
+
+<dl><dt><strong>get_is_registered</strong> = gi.FunctionInfo(get_is_registered)<dd><tt><a href="#Sarcina-get_is_registered">get_is_registered</a>(self)</tt></dl>
+
+<dl><dt><strong>get_is_remote</strong> = gi.FunctionInfo(get_is_remote)<dd><tt><a href="#Sarcina-get_is_remote">get_is_remote</a>(self)</tt></dl>
+
+<dl><dt><strong>hold</strong> = gi.FunctionInfo(hold)<dd><tt><a href="#Sarcina-hold">hold</a>(self)</tt></dl>
+
+<dl><dt><strong>id_is_valid</strong> = gi.FunctionInfo(id_is_valid)<dd><tt><a href="#Sarcina-id_is_valid">id_is_valid</a>(application_id:str)</tt></dl>
+
+<dl><dt><strong>mark_busy</strong> = gi.FunctionInfo(mark_busy)<dd><tt><a href="#Sarcina-mark_busy">mark_busy</a>(self)</tt></dl>
+
+<dl><dt><strong>open</strong> = gi.FunctionInfo(open)<dd><tt><a href="#Sarcina-open">open</a>(self,&nbsp;files:list,&nbsp;hint:str)</tt></dl>
+
+<dl><dt><strong>quit</strong> = gi.FunctionInfo(quit)<dd><tt><a href="#Sarcina-quit">quit</a>(self)</tt></dl>
+
+<dl><dt><strong>register</strong> = gi.FunctionInfo(register)<dd><tt><a href="#Sarcina-register">register</a>(self,&nbsp;cancellable:Gio.Cancellable=None)</tt></dl>
+
+<dl><dt><strong>release</strong> = gi.FunctionInfo(release)<dd><tt><a href="#Sarcina-release">release</a>(self)</tt></dl>
+
+<dl><dt><strong>run</strong> = gi.FunctionInfo(run)<dd><tt><a href="#Sarcina-run">run</a>(self,&nbsp;argv:list=None)</tt></dl>
+
+<dl><dt><strong>send_notification</strong> = gi.FunctionInfo(send_notification)<dd><tt><a href="#Sarcina-send_notification">send_notification</a>(self,&nbsp;id:str=None,&nbsp;notification:Gio.Notification)</tt></dl>
+
+<dl><dt><strong>set_action_group</strong> = gi.FunctionInfo(set_action_group)<dd><tt><a href="#Sarcina-set_action_group">set_action_group</a>(self,&nbsp;action_group:Gio.ActionGroup=None)</tt></dl>
+
+<dl><dt><strong>set_application_id</strong> = gi.FunctionInfo(set_application_id)<dd><tt><a href="#Sarcina-set_application_id">set_application_id</a>(self,&nbsp;application_id:str=None)</tt></dl>
+
+<dl><dt><strong>set_default</strong> = gi.FunctionInfo(set_default)<dd><tt><a href="#Sarcina-set_default">set_default</a>(self)</tt></dl>
+
+<dl><dt><strong>set_flags</strong> = gi.FunctionInfo(set_flags)<dd><tt><a href="#Sarcina-set_flags">set_flags</a>(self,&nbsp;flags:Gio.ApplicationFlags)</tt></dl>
+
+<dl><dt><strong>set_inactivity_timeout</strong> = gi.FunctionInfo(set_inactivity_timeout)<dd><tt><a href="#Sarcina-set_inactivity_timeout">set_inactivity_timeout</a>(self,&nbsp;inactivity_timeout:int)</tt></dl>
+
+<dl><dt><strong>unmark_busy</strong> = gi.FunctionInfo(unmark_busy)<dd><tt><a href="#Sarcina-unmark_busy">unmark_busy</a>(self)</tt></dl>
+
+<dl><dt><strong>withdraw_notification</strong> = gi.FunctionInfo(withdraw_notification)<dd><tt><a href="#Sarcina-withdraw_notification">withdraw_notification</a>(self,&nbsp;id:str)</tt></dl>
+
+<hr>
+Methods inherited from <a href="gi.overrides.GObject.html#Object">gi.overrides.GObject.Object</a>:<br>
+<dl><dt><a name="Sarcina-__copy__"><strong>__copy__</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="Sarcina-__deepcopy__"><strong>__deepcopy__</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="Sarcina-bind_property"><strong>bind_property</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="Sarcina-bind_property_full"><strong>bind_property_full</strong></a> = _unsupported_method(self, *args, **kargs)</dt></dl>
+
+<dl><dt><a name="Sarcina-chain"><strong>chain</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="Sarcina-compat_control"><strong>compat_control</strong></a> = _unsupported_method(self, *args, **kargs)</dt></dl>
+
+<dl><dt><a name="Sarcina-connect"><strong>connect</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="Sarcina-connect_after"><strong>connect_after</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="Sarcina-connect_object"><strong>connect_object</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="Sarcina-connect_object_after"><strong>connect_object_after</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="Sarcina-disconnect"><strong>disconnect</strong></a> = signal_handler_disconnect(*args, **kwargs)</dt><dd><tt>#&nbsp;Function&nbsp;wrapper&nbsp;for&nbsp;signal&nbsp;functions&nbsp;used&nbsp;as&nbsp;instance&nbsp;methods.<br>
+#&nbsp;This&nbsp;is&nbsp;needed&nbsp;when&nbsp;the&nbsp;signal&nbsp;functions&nbsp;come&nbsp;directly&nbsp;from&nbsp;GI.<br>
+#&nbsp;(they&nbsp;are&nbsp;not&nbsp;already&nbsp;wrapped)</tt></dd></dl>
+
+<dl><dt><a name="Sarcina-disconnect_by_func"><strong>disconnect_by_func</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="Sarcina-emit"><strong>emit</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="Sarcina-emit_stop_by_name"><strong>emit_stop_by_name</strong></a> = stop_emission(self, detailed_signal)</dt><dd><tt>Deprecated,&nbsp;please&nbsp;use&nbsp;stop_emission_by_name.</tt></dd></dl>
+
+<dl><dt><a name="Sarcina-force_floating"><strong>force_floating</strong></a> = _unsupported_method(self, *args, **kargs)</dt></dl>
+
+<dl><dt><a name="Sarcina-freeze_notify"><strong>freeze_notify</strong></a>(self)</dt><dd><tt>Freezes&nbsp;the&nbsp;<a href="builtins.html#object">object</a>'s&nbsp;property-changed&nbsp;notification&nbsp;queue.<br>
+&nbsp;<br>
+:returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;context&nbsp;manager&nbsp;which&nbsp;optionally&nbsp;can&nbsp;be&nbsp;used&nbsp;to<br>
+&nbsp;&nbsp;&nbsp;&nbsp;automatically&nbsp;thaw&nbsp;notifications.<br>
+&nbsp;<br>
+This&nbsp;will&nbsp;freeze&nbsp;the&nbsp;<a href="builtins.html#object">object</a>&nbsp;so&nbsp;that&nbsp;"notify"&nbsp;signals&nbsp;are&nbsp;blocked&nbsp;until<br>
+the&nbsp;<a href="#Sarcina-thaw_notify">thaw_notify</a>()&nbsp;method&nbsp;is&nbsp;called.<br>
+&nbsp;<br>
+..&nbsp;code-block::&nbsp;python<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;with&nbsp;obj.<a href="#Sarcina-freeze_notify">freeze_notify</a>():<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pass</tt></dd></dl>
+
+<dl><dt><a name="Sarcina-get_data"><strong>get_data</strong></a> = _unsupported_data_method(self, *args, **kargs)</dt></dl>
+
+<dl><dt><a name="Sarcina-get_properties"><strong>get_properties</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="Sarcina-get_property"><strong>get_property</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="Sarcina-get_qdata"><strong>get_qdata</strong></a> = _unsupported_data_method(self, *args, **kargs)</dt></dl>
+
+<dl><dt><a name="Sarcina-handler_block"><strong>handler_block</strong></a> = signal_handler_block(obj, handler_id)</dt><dd><tt>Blocks&nbsp;the&nbsp;signal&nbsp;handler&nbsp;from&nbsp;being&nbsp;invoked&nbsp;until<br>
+<a href="#Sarcina-handler_unblock">handler_unblock</a>()&nbsp;is&nbsp;called.<br>
+&nbsp;<br>
+:param&nbsp;GObject.Object&nbsp;obj:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Object&nbsp;instance&nbsp;to&nbsp;block&nbsp;handlers&nbsp;for.<br>
+:param&nbsp;int&nbsp;handler_id:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Id&nbsp;of&nbsp;signal&nbsp;to&nbsp;block.<br>
+:returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;context&nbsp;manager&nbsp;which&nbsp;optionally&nbsp;can&nbsp;be&nbsp;used&nbsp;to<br>
+&nbsp;&nbsp;&nbsp;&nbsp;automatically&nbsp;unblock&nbsp;the&nbsp;handler:<br>
+&nbsp;<br>
+..&nbsp;code-block::&nbsp;python<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;with&nbsp;GObject.signal_handler_block(obj,&nbsp;id):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pass</tt></dd></dl>
+
+<dl><dt><a name="Sarcina-handler_block_by_func"><strong>handler_block_by_func</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="Sarcina-handler_disconnect"><strong>handler_disconnect</strong></a> = signal_handler_disconnect(*args, **kwargs)</dt><dd><tt>#&nbsp;Function&nbsp;wrapper&nbsp;for&nbsp;signal&nbsp;functions&nbsp;used&nbsp;as&nbsp;instance&nbsp;methods.<br>
+#&nbsp;This&nbsp;is&nbsp;needed&nbsp;when&nbsp;the&nbsp;signal&nbsp;functions&nbsp;come&nbsp;directly&nbsp;from&nbsp;GI.<br>
+#&nbsp;(they&nbsp;are&nbsp;not&nbsp;already&nbsp;wrapped)</tt></dd></dl>
+
+<dl><dt><a name="Sarcina-handler_is_connected"><strong>handler_is_connected</strong></a> = signal_handler_is_connected(*args, **kwargs)</dt><dd><tt>#&nbsp;Function&nbsp;wrapper&nbsp;for&nbsp;signal&nbsp;functions&nbsp;used&nbsp;as&nbsp;instance&nbsp;methods.<br>
+#&nbsp;This&nbsp;is&nbsp;needed&nbsp;when&nbsp;the&nbsp;signal&nbsp;functions&nbsp;come&nbsp;directly&nbsp;from&nbsp;GI.<br>
+#&nbsp;(they&nbsp;are&nbsp;not&nbsp;already&nbsp;wrapped)</tt></dd></dl>
+
+<dl><dt><a name="Sarcina-handler_unblock"><strong>handler_unblock</strong></a> = signal_handler_unblock(*args, **kwargs)</dt><dd><tt>#&nbsp;Function&nbsp;wrapper&nbsp;for&nbsp;signal&nbsp;functions&nbsp;used&nbsp;as&nbsp;instance&nbsp;methods.<br>
+#&nbsp;This&nbsp;is&nbsp;needed&nbsp;when&nbsp;the&nbsp;signal&nbsp;functions&nbsp;come&nbsp;directly&nbsp;from&nbsp;GI.<br>
+#&nbsp;(they&nbsp;are&nbsp;not&nbsp;already&nbsp;wrapped)</tt></dd></dl>
+
+<dl><dt><a name="Sarcina-handler_unblock_by_func"><strong>handler_unblock_by_func</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="Sarcina-interface_find_property"><strong>interface_find_property</strong></a> = _unsupported_method(self, *args, **kargs)</dt></dl>
+
+<dl><dt><a name="Sarcina-interface_install_property"><strong>interface_install_property</strong></a> = _unsupported_method(self, *args, **kargs)</dt></dl>
+
+<dl><dt><a name="Sarcina-interface_list_properties"><strong>interface_list_properties</strong></a> = _unsupported_method(self, *args, **kargs)</dt></dl>
+
+<dl><dt><a name="Sarcina-notify_by_pspec"><strong>notify_by_pspec</strong></a> = _unsupported_method(self, *args, **kargs)</dt></dl>
+
+<dl><dt><a name="Sarcina-ref"><strong>ref</strong></a> = _unsupported_method(self, *args, **kargs)</dt></dl>
+
+<dl><dt><a name="Sarcina-ref_sink"><strong>ref_sink</strong></a> = _unsupported_method(self, *args, **kargs)</dt></dl>
+
+<dl><dt><a name="Sarcina-replace_data"><strong>replace_data</strong></a> = _unsupported_data_method(self, *args, **kargs)</dt></dl>
+
+<dl><dt><a name="Sarcina-replace_qdata"><strong>replace_qdata</strong></a> = _unsupported_data_method(self, *args, **kargs)</dt></dl>
+
+<dl><dt><a name="Sarcina-run_dispose"><strong>run_dispose</strong></a> = _unsupported_method(self, *args, **kargs)</dt></dl>
+
+<dl><dt><a name="Sarcina-set_data"><strong>set_data</strong></a> = _unsupported_data_method(self, *args, **kargs)</dt></dl>
+
+<dl><dt><a name="Sarcina-set_properties"><strong>set_properties</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="Sarcina-set_property"><strong>set_property</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="Sarcina-steal_data"><strong>steal_data</strong></a> = _unsupported_data_method(self, *args, **kargs)</dt></dl>
+
+<dl><dt><a name="Sarcina-steal_qdata"><strong>steal_qdata</strong></a> = _unsupported_data_method(self, *args, **kargs)</dt></dl>
+
+<dl><dt><a name="Sarcina-stop_emission"><strong>stop_emission</strong></a>(self, detailed_signal)</dt><dd><tt>Deprecated,&nbsp;please&nbsp;use&nbsp;stop_emission_by_name.</tt></dd></dl>
+
+<dl><dt><a name="Sarcina-stop_emission_by_name"><strong>stop_emission_by_name</strong></a> = signal_stop_emission_by_name(*args, **kwargs)</dt><dd><tt>#&nbsp;Function&nbsp;wrapper&nbsp;for&nbsp;signal&nbsp;functions&nbsp;used&nbsp;as&nbsp;instance&nbsp;methods.<br>
+#&nbsp;This&nbsp;is&nbsp;needed&nbsp;when&nbsp;the&nbsp;signal&nbsp;functions&nbsp;come&nbsp;directly&nbsp;from&nbsp;GI.<br>
+#&nbsp;(they&nbsp;are&nbsp;not&nbsp;already&nbsp;wrapped)</tt></dd></dl>
+
+<dl><dt><a name="Sarcina-unref"><strong>unref</strong></a> = _unsupported_method(self, *args, **kargs)</dt></dl>
+
+<dl><dt><a name="Sarcina-watch_closure"><strong>watch_closure</strong></a> = _unsupported_method(self, *args, **kargs)</dt></dl>
+
+<dl><dt><a name="Sarcina-weak_ref"><strong>weak_ref</strong></a>(...)</dt></dl>
+
+<hr>
+Data descriptors inherited from gi.repository.GObject.Object:<br>
+<dl><dt><strong>g_type_instance</strong></dt>
+</dl>
+<dl><dt><strong>qdata</strong></dt>
+</dl>
+<dl><dt><strong>ref_count</strong></dt>
+</dl>
+<hr>
+Data and other attributes inherited from gi.repository.GObject.Object:<br>
+<dl><dt><strong>is_floating</strong> = gi.FunctionInfo(is_floating)<dd><tt><a href="#Sarcina-is_floating">is_floating</a>(self)</tt></dl>
+
+<dl><dt><strong>notify</strong> = gi.FunctionInfo(notify)<dd><tt><a href="#Sarcina-notify">notify</a>(self,&nbsp;property_name:str)</tt></dl>
+
+<dl><dt><strong>thaw_notify</strong> = gi.FunctionInfo(thaw_notify)<dd><tt><a href="#Sarcina-thaw_notify">thaw_notify</a>(self)</tt></dl>
+
+<hr>
+Methods inherited from gi._gobject._gobject.GObject:<br>
+<dl><dt><a name="Sarcina-__delattr__"><strong>__delattr__</strong></a>(self, name, /)</dt><dd><tt>Implement&nbsp;delattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="Sarcina-__eq__"><strong>__eq__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self==value.</tt></dd></dl>
+
+<dl><dt><a name="Sarcina-__ge__"><strong>__ge__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&gt;=value.</tt></dd></dl>
+
+<dl><dt><a name="Sarcina-__gt__"><strong>__gt__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&gt;value.</tt></dd></dl>
+
+<dl><dt><a name="Sarcina-__hash__"><strong>__hash__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;hash(self).</tt></dd></dl>
+
+<dl><dt><a name="Sarcina-__le__"><strong>__le__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&lt;=value.</tt></dd></dl>
+
+<dl><dt><a name="Sarcina-__lt__"><strong>__lt__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&lt;value.</tt></dd></dl>
+
+<dl><dt><a name="Sarcina-__ne__"><strong>__ne__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self!=value.</tt></dd></dl>
+
+<dl><dt><a name="Sarcina-__new__"><strong>__new__</strong></a>(*args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from <a href="gi.types.html#_GObjectMetaBase">gi.types._GObjectMetaBase</a></font></font></dt><dd><tt>Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;<a href="builtins.html#object">object</a>.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<dl><dt><a name="Sarcina-__repr__"><strong>__repr__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;repr(self).</tt></dd></dl>
+
+<dl><dt><a name="Sarcina-__setattr__"><strong>__setattr__</strong></a>(self, name, value, /)</dt><dd><tt>Implement&nbsp;setattr(self,&nbsp;name,&nbsp;value).</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from gi._gobject._gobject.GObject:<br>
+<dl><dt><strong>__dict__</strong></dt>
+</dl>
+<dl><dt><strong>__gpointer__</strong></dt>
+</dl>
+<dl><dt><strong>__grefcount__</strong></dt>
+</dl>
+<hr>
+Data and other attributes inherited from gi._gobject._gobject.GObject:<br>
+<dl><dt><strong>__gdoc__</strong> = 'Object sarcina+Sarcina<font color="#c040c0">\n\n</font>Signals from GActionGrou...riant)<font color="#c040c0">\n\n</font>Signals from GObject:<font color="#c040c0">\n</font>  notify (GParam)<font color="#c040c0">\n\n</font>'</dl>
+
+<dl><dt><strong>props</strong> = &lt;gi._gobject.GProps object&gt;</dl>
+
+<hr>
+Data and other attributes inherited from <a href="gi.repository.Gio.html#ActionGroup">gi.repository.Gio.ActionGroup</a>:<br>
+<dl><dt><strong>__weakref__</strong> = &lt;weakref at 0x7f8d3c168a98; to 'GObjectMeta' at 0x1161648 (Sarcina)&gt;</dl>
+
+<dl><dt><strong>action_added</strong> = gi.FunctionInfo(action_added)<dd><tt><a href="#Sarcina-action_added">action_added</a>(self,&nbsp;action_name:str)</tt></dl>
+
+<dl><dt><strong>action_enabled_changed</strong> = gi.FunctionInfo(action_enabled_changed)<dd><tt><a href="#Sarcina-action_enabled_changed">action_enabled_changed</a>(self,&nbsp;action_name:str,&nbsp;enabled:bool)</tt></dl>
+
+<dl><dt><strong>action_removed</strong> = gi.FunctionInfo(action_removed)<dd><tt><a href="#Sarcina-action_removed">action_removed</a>(self,&nbsp;action_name:str)</tt></dl>
+
+<dl><dt><strong>action_state_changed</strong> = gi.FunctionInfo(action_state_changed)<dd><tt><a href="#Sarcina-action_state_changed">action_state_changed</a>(self,&nbsp;action_name:str,&nbsp;state:GLib.Variant)</tt></dl>
+
+<dl><dt><strong>activate_action</strong> = gi.FunctionInfo(activate_action)<dd><tt><a href="#Sarcina-activate_action">activate_action</a>(self,&nbsp;action_name:str,&nbsp;parameter:GLib.Variant=None)</tt></dl>
+
+<dl><dt><strong>change_action_state</strong> = gi.FunctionInfo(change_action_state)<dd><tt><a href="#Sarcina-change_action_state">change_action_state</a>(self,&nbsp;action_name:str,&nbsp;value:GLib.Variant)</tt></dl>
+
+<dl><dt><strong>get_action_enabled</strong> = gi.FunctionInfo(get_action_enabled)<dd><tt><a href="#Sarcina-get_action_enabled">get_action_enabled</a>(self,&nbsp;action_name:str)</tt></dl>
+
+<dl><dt><strong>get_action_parameter_type</strong> = gi.FunctionInfo(get_action_parameter_type)<dd><tt><a href="#Sarcina-get_action_parameter_type">get_action_parameter_type</a>(self,&nbsp;action_name:str)</tt></dl>
+
+<dl><dt><strong>get_action_state</strong> = gi.FunctionInfo(get_action_state)<dd><tt><a href="#Sarcina-get_action_state">get_action_state</a>(self,&nbsp;action_name:str)</tt></dl>
+
+<dl><dt><strong>get_action_state_hint</strong> = gi.FunctionInfo(get_action_state_hint)<dd><tt><a href="#Sarcina-get_action_state_hint">get_action_state_hint</a>(self,&nbsp;action_name:str)</tt></dl>
+
+<dl><dt><strong>get_action_state_type</strong> = gi.FunctionInfo(get_action_state_type)<dd><tt><a href="#Sarcina-get_action_state_type">get_action_state_type</a>(self,&nbsp;action_name:str)</tt></dl>
+
+<dl><dt><strong>has_action</strong> = gi.FunctionInfo(has_action)<dd><tt><a href="#Sarcina-has_action">has_action</a>(self,&nbsp;action_name:str)</tt></dl>
+
+<dl><dt><strong>list_actions</strong> = gi.FunctionInfo(list_actions)<dd><tt><a href="#Sarcina-list_actions">list_actions</a>(self)</tt></dl>
+
+<dl><dt><strong>query_action</strong> = gi.FunctionInfo(query_action)<dd><tt><a href="#Sarcina-query_action">query_action</a>(self,&nbsp;action_name:str)&nbsp;-&gt;&nbsp;enabled:bool,&nbsp;parameter_type:GLib.VariantType,&nbsp;state_type:GLib.VariantType,&nbsp;state_hint:GLib.Variant,&nbsp;state:GLib.Variant</tt></dl>
+
+<hr>
+Data and other attributes inherited from <a href="gi.repository.Gio.html#ActionMap">gi.repository.Gio.ActionMap</a>:<br>
+<dl><dt><strong>add_action</strong> = gi.FunctionInfo(add_action)<dd><tt><a href="#Sarcina-add_action">add_action</a>(self,&nbsp;action:Gio.Action)</tt></dl>
+
+<dl><dt><strong>add_action_entries</strong> = gi.FunctionInfo(add_action_entries)<dd><tt><a href="#Sarcina-add_action_entries">add_action_entries</a>(self,&nbsp;entries:list,&nbsp;user_data)</tt></dl>
+
+<dl><dt><strong>lookup_action</strong> = gi.FunctionInfo(lookup_action)<dd><tt><a href="#Sarcina-lookup_action">lookup_action</a>(self,&nbsp;action_name:str)</tt></dl>
+
+<dl><dt><strong>remove_action</strong> = gi.FunctionInfo(remove_action)<dd><tt><a href="#Sarcina-remove_action">remove_action</a>(self,&nbsp;action_name:str)</tt></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="SarcinaHandler">class <strong>SarcinaHandler</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="SarcinaHandler-__init__"><strong>__init__</strong></a>(self, shell_ui)</dt></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>logger</strong> = &lt;logging.Logger object&gt;</td></tr></table>
+</body></html>
